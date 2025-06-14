@@ -10,7 +10,7 @@
       <span>&</span>
       <div>
         <img src="/img/bride.jpg" alt="Bride" />
-        <p>Indah Lestari</p>
+        <p>Indah Larasati</p>
       </div>
     </div>
   </section>
