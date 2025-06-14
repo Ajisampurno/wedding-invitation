@@ -1,0 +1,49 @@
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff0f5;
+  color: #333;
+}
+
+.hero {
+  height: 100vh;
+  background: url('/img/hero-bg.jpeg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.hero .overlay {
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  /* backdrop-filter: blur(6px); */
+  padding: 40px;
+  /* border-radius: 12px; */
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  font-family: 'Georgia', cursive;
+}
+
+section {
+  padding: 60px 20px;
+}
+
+.couple-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.couple img {
+  border-radius: 50%;
+  border: 3px solid pink;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
