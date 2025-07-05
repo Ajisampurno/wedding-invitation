@@ -2,17 +2,19 @@
 <template>
   <div>
     <HeroSection />
-    <Countdown />
-    <CoupleSection />
+    <SambutanSection />
+    <ProfileMempelaiSection />
     <EventSection />
+    <MapSection />
     <FooterSection />
   </div>
 </template>
 
 <script setup>
 import HeroSection from './components/HeroSection.vue'
-import CoupleSection from './components/CoupleSection.vue'
 import EventSection from './components/EventSection.vue'
 import FooterSection from './components/FooterSection.vue'
-import Countdown from './components/Countdown.vue'
+import SambutanSection from './components/SambutanSection.vue'
+import ProfileMempelaiSection from './components/ProfileMempelaiSection.vue'
+import MapSection from './components/MapSection.vue'
 </script>
