@@ -7,6 +7,7 @@
     <EventSection />
     <MapSection />
     <GalerySection />
+    <UcapanSection />
     <FooterSection />
   </div>
 </template>
@@ -19,4 +20,5 @@ import SambutanSection from './components/SambutanSection.vue'
 import ProfileMempelaiSection from './components/ProfileMempelaiSection.vue'
 import MapSection from './components/MapSection.vue'
 import GalerySection from './components/GalerySection.vue'
+import UcapanSection from './components/UcapanSection.vue'
 </script>
