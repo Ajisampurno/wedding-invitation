@@ -50,22 +50,14 @@ async function submitUcapan() {
     }
 
     ucapanList.value.unshift(newUcapan);
-    await fetch('https://script.google.com/macros/s/AKfycbzSyAq73nO6ZFS9Lx-7UAqjpN7wgPwHkaih146xsjNTU9iGA6MKuABaOUdZRHCILhMX/exec', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            nama: nama.value,
-            pesan: pesan.value
-        })
-        })
-        .then(response => {
-        if (!response.ok) throw new Error("Gagal mengirim!");
-        return response.json();
-        })
-        .then(data => console.log("Sukses:", data))
-        .catch(err => console.error("Error:", err));
+    await fetch('https://script.google.com/macros/s/AKfycbywEdDxgU8tzzIrsMEEw7__ReAfGVctmzcB4UcAtzdHMpCggB6Rw9YPlmkWC0uclEDy/exec', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `nama=${encodeURIComponent(nama.value)}&pesan=${encodeURIComponent(pesan.value)}`
+    })
+    .then(r => r.json())
+    .then(data => console.log('Sukses:', data))
+    .catch(err => console.error('Error:', err));
 
     nama.value = ''
     pesan.value = ''
