@@ -23,62 +23,64 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+  import { ref, onMounted } from 'vue'
 
-const nama = ref('')
-const pesan = ref('')
-const ucapanList = ref([
-  { nama: 'Budi', pesan: 'Selamat menempuh hidup baru, semoga bahagia selalu!' },
-  { nama: 'Siti', pesan: 'Barakallahu lakuma! Langgeng sampai surga ya.' }
-])
+  const nama = ref('')
+  const pesan = ref('')
+  const ucapanList = ref([])
 
-// function submitUcapan() {
-//   ucapanList.value.unshift({
-//     nama: nama.value,
-//     pesan: pesan.value
-//   })
-//   nama.value = ''
-//   pesan.value = ''
-// }
+  const API_URL = 'https://script.google.com/macros/s/AKfycbw4W4SNheHcUIOaXLE1Td69sFBaSTuAL33SgJAUUo0kYahJ3j_LT8G_QVgR6-nrBFqg/exec'
 
-async function submitUcapan() {
+  async function loadUcapan() {
+    try {
+      const res = await fetch('https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgG6P4Ut9mBEt27VAVj1uxvca5WJkUW4j4-1zEOxQuCs-vuV_Kax98KYOnmPyYEFZN-1gf2gob1lkiJphhzH1Brvvr7yQSTilNiXDcARoRu7jd630JmdwRt_Kao3fwCkCY8aaQR9WSYohJsCheFMBrJKvheuIylTlkJfueTluFZ6c7MSPvPGt8Xf7_n6RoXzj2WhWDeLIfgPQWU6bJCPrcxcIaFJC8JnipKERhzDuzBb7y6VGBC1t1M3KOiruq75FnnXGx8w__pDqpmU_KrM87F2GRkwA&lib=MQhHTnH3m9Xgxp3OiYglVD9iR4gTsQqJ6', { method: 'GET' })
+      const text = await res.text()
+      console.log('Raw response:', text)
+
+      const data = JSON.parse(text)
+      ucapanList.value = data
+    } catch (err) {
+      console.error('Gagal load ucapan:', err)
+    }
+  }
+
+  async function submitUcapan() {
     if (!nama.value || !pesan.value) return;
 
-    const newUcapan = {
-        nama: nama.value,
-        pesan: pesan.value
-    }
+    const newUcapan = { nama: nama.value, pesan: pesan.value }
+    ucapanList.value.unshift(newUcapan)
 
-    ucapanList.value.unshift(newUcapan);
-    await fetch('https://script.google.com/macros/s/AKfycbywEdDxgU8tzzIrsMEEw7__ReAfGVctmzcB4UcAtzdHMpCggB6Rw9YPlmkWC0uclEDy/exec', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `nama=${encodeURIComponent(nama.value)}&pesan=${encodeURIComponent(pesan.value)}`
-    })
-    .then(r => r.json())
-    .then(data => console.log('Sukses:', data))
-    .catch(err => console.error('Error:', err));
+    try {
+      await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `nama=${encodeURIComponent(nama.value)}&pesan=${encodeURIComponent(pesan.value)}`
+      })
+    } catch (err) {
+      console.error('Error submit:', err)
+    }
 
     nama.value = ''
     pesan.value = ''
-}
+  }
 
+  onMounted(() => {
+    loadUcapan()
 
-// Scroll animation
-onMounted(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view')
-          observer.unobserve(entry.target)
-        }
-      })
-    },
-    { threshold: 0.15 }
-  )
-  document.querySelectorAll('[v-scroll], [v-scroll="true"]').forEach((el) => observer.observe(el))
-})
+    // Scroll animation
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.15 }
+    )
+    document.querySelectorAll('[v-scroll], [v-scroll="true"]').forEach((el) => observer.observe(el))
+  })
 </script>
 
 <style scoped>
