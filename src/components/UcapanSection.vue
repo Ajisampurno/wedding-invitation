@@ -199,6 +199,24 @@
   transition-delay: 0.3s;
 }
 
+/* list ucapan scroll */
+.list-ucapan {
+  max-height: 600px;
+  overflow-y: auto;
+  margin-top: 20px;
+  padding-right: 10px;
+}
+.list-ucapan::-webkit-scrollbar {
+  width: 6px;
+}
+.list-ucapan::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+.list-ucapan::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 /* Responsif */
 @media (max-width: 600px) {
   .judul {
