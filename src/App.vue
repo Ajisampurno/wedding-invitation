@@ -29,6 +29,7 @@
     <MapSection id="map" />
     <GalerySection id="galery" />
     <UcapanSection id="ucapan" />
+    <KonfirmasiSection id="konfirmasi" />
     <FooterSection id="footer" />
   </div>
 </template>
@@ -44,6 +45,7 @@ import MapSection from "./components/MapSection.vue"
 import GalerySection from "./components/GalerySection.vue"
 import UcapanSection from "./components/UcapanSection.vue"
 import FooterSection from "./components/FooterSection.vue"
+import KonfirmasiSection from "./components/KonfirmasiSection.vue"
 
 const audioRef = ref(null)
 const isPlaying = ref(false)
@@ -67,6 +69,7 @@ const sections = [
   { id: "map", label: "Lokasi" },
   { id: "galery", label: "Galeri" },
   { id: "ucapan", label: "Ucapan" },
+  { id: "konfirmasi", label: "Konfirmasi" },
   { id: "footer", label: "Akhir" },
 ]
 
