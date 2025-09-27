@@ -71,7 +71,7 @@ app.directive('scroll', vScroll)
   bottom: 0;
   left: -20%;
   right: -20%;
-  background: url('/images/batik-border-light.svg') center/cover no-repeat;
+  background: url('/img/bg-batik.jpg') center/cover no-repeat;
   opacity: 0.05;
   z-index: 0;
 }

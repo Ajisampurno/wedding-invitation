@@ -114,14 +114,14 @@
     }
 
     .form-konfirmasi button {
-    background: #e91e63;
+    background: #4a2d1f;
     color: white;
     border: none;
     cursor: pointer;
     transition: background 0.3s;
     }
     .form-konfirmasi button:hover {
-    background: #c2185b;
+    background: #4a2d1f;
     }
 
     /* daftar */
