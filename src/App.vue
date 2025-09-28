@@ -125,7 +125,7 @@ const scrollTo = (id) => {
   display: flex;
   z-index: 2000;
   overflow: hidden;
-  background: #000; /* fallback */
+  background: #000;
 }
 
 /* Bagian kiri & kanan */

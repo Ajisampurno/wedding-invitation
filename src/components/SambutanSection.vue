@@ -44,7 +44,7 @@ app.directive('scroll', vScroll)
 @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap');
 
 .sambutan.mewah {
-  background-color: #f5eee6;
+  background-color: #fffaf3;
   padding: 3.5rem 1.5rem;
   text-align: center;
   color: #5c3d2e;

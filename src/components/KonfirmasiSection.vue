@@ -93,9 +93,14 @@
 
 <style>
     .konfirmasi-section {
-    padding: 60px 20px;
+    background-color: #fffaf3;
+    padding: 4rem 1.5rem;
     text-align: center;
-    }
+    font-family: 'Inter', sans-serif;
+    color: #4c2f1d;
+    position: relative;
+    overflow: hidden;
+  }
 
     .form-konfirmasi {
     margin: 20px auto;

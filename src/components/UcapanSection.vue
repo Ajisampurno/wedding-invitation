@@ -35,7 +35,6 @@
     try {
       const res = await fetch('https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgG6P4Ut9mBEt27VAVj1uxvca5WJkUW4j4-1zEOxQuCs-vuV_Kax98KYOnmPyYEFZN-1gf2gob1lkiJphhzH1Brvvr7yQSTilNiXDcARoRu7jd630JmdwRt_Kao3fwCkCY8aaQR9WSYohJsCheFMBrJKvheuIylTlkJfueTluFZ6c7MSPvPGt8Xf7_n6RoXzj2WhWDeLIfgPQWU6bJCPrcxcIaFJC8JnipKERhzDuzBb7y6VGBC1t1M3KOiruq75FnnXGx8w__pDqpmU_KrM87F2GRkwA&lib=MQhHTnH3m9Xgxp3OiYglVD9iR4gTsQqJ6', { method: 'GET' })
       const text = await res.text()
-      console.log('Raw response:', text)
 
       const data = JSON.parse(text)
       ucapanList.value = data
