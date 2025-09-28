@@ -42,24 +42,24 @@ app.directive('scroll', vScroll)
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@500;700&family=Inter&display=swap');
 
 .mempelai {
-  background-color: #ffffff;
-  padding: 5rem 1.5rem 4rem;
-  text-align: center;
-  color: #5c3d2e;
+  background-color: #fffaf3;
+  padding: 4rem 1.5rem;
+  color: #4a2d1f;
   font-family: 'Inter', sans-serif;
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
 .mempelai::before {
   content: '';
   position: absolute;
-  top: -50px;
-  left: -50px;
-  right: -50px;
-  bottom: -50px;
-  background: url('/images/batik-border-light.svg') center/contain no-repeat;
-  opacity: 0.05;
+  top: 0;
+  bottom: 0;
+  left: -25%;
+  right: -25%;
+  background: url('/img/bg-batik.jpg') center/cover no-repeat;
+  opacity: 0.04;
   z-index: 0;
 }
 
