@@ -75,7 +75,7 @@ onMounted(() => {
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter&display=swap');
 
 .galeri-section {
-  background-color: #fffaf3;
+  background: url('/img/bg-batik-biru.jpeg') center/cover no-repeat;
   padding: 4rem 1.5rem;
   position: relative;
   overflow: hidden;
@@ -91,7 +91,6 @@ onMounted(() => {
   bottom: -40px;
   left: -20%;
   right: -20%;
-  background: url('/img/bg-batik.jpg') center/cover no-repeat;
   opacity: 0.05;
   z-index: 0;
 }
@@ -107,13 +106,13 @@ onMounted(() => {
   font-family: 'Cinzel', serif;
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  color: #b88c4a;
+  color: #ffffff;
 }
 
 .deskripsi {
   font-size: 1.05rem;
   margin-bottom: 2.5rem;
-  color: #4c2f1d;
+  color: #ffffff;
 }
 
 .galeri-grid {
@@ -126,8 +125,8 @@ onMounted(() => {
 .foto-wrapper {
   overflow: hidden;
   border-radius: 1rem;
-  border: 4px solid #e8d4b0;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  border: 4px solid #ffffff;
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.05);
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -139,6 +138,7 @@ onMounted(() => {
   height: 100%;
   object-fit: cover;
   display: block;
+
 }
 
 /* Modal */
@@ -195,8 +195,26 @@ onMounted(() => {
 
 /* Responsive */
 @media (max-width: 600px) {
-  .judul {
-    font-size: 1.8rem;
+  .galeri-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 0.4rem;
+  }
+
+  .foto-wrapper {
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 0.6rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .foto-wrapper:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .foto {
+    border-radius: 0.6rem;
   }
 }
+
 </style>

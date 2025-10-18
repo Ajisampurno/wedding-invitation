@@ -93,11 +93,11 @@
 
 <style>
     .konfirmasi-section {
-    background-color: #fffaf3;
+    background: url('/img/bg-batik-biru.jpeg') center/cover no-repeat;
     padding: 4rem 1.5rem;
     text-align: center;
     font-family: 'Inter', sans-serif;
-    color: #4c2f1d;
+    color: #ffffff;
     position: relative;
     overflow: hidden;
   }
@@ -136,11 +136,16 @@
     margin-top: 20px;
     }
     .konfirmasi-card {
-    background: #fff;
-    border: 1px solid #eee;
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    text-align: left;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      text-align: left;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
     }
+
 </style>

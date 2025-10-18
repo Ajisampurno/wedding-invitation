@@ -86,7 +86,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Cinzel:wght@600&display=swap');
 
 .ucapan-section {
-  background-color: #fffaf3;
+  background: url('/img/bg-batik-biru.jpeg') center/cover no-repeat;
   padding: 4rem 1.5rem;
   color: #4a2d1f;
   font-family: 'Inter', sans-serif;
@@ -102,7 +102,6 @@
   bottom: 0;
   left: -25%;
   right: -25%;
-  background: url('/img/bg-batik.jpg') center/cover no-repeat;
   opacity: 0.04;
   z-index: 0;
 }
@@ -117,14 +116,14 @@
 .judul {
   font-family: 'Cinzel', serif;
   font-size: 2.2rem;
-  color: #b88c4a;
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
 .deskripsi {
   font-size: 1.05rem;
   margin-bottom: 2rem;
-  color: #5c3d2e;
+  color: #ffffff;
 }
 
 .form-ucapan {
@@ -133,50 +132,83 @@
   gap: 1rem;
   margin-bottom: 2.5rem;
 }
+
 .form-ucapan input,
 .form-ucapan textarea {
   padding: 0.8rem 1rem;
   border-radius: 8px;
-  border: 1px solid #decaa2;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   font-family: inherit;
   font-size: 1rem;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transition: all 0.3s ease;
 }
+
+/* Placeholder lembut */
+.form-ucapan input::placeholder,
+.form-ucapan textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
 .form-ucapan textarea {
   resize: vertical;
   min-height: 100px;
 }
+
+/* Fokus dengan aksen emas */
+.form-ucapan input:focus,
+.form-ucapan textarea:focus {
+  outline: none;
+  border-color: #c49b63;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* Tombol Transparan */
 .form-ucapan button {
-  background: #b88c4a;
+  background: rgba(255, 255, 255, 0.15);
   color: #fffaf3;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 0.75rem 1rem;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
 }
+
+/* Hover emas */
 .form-ucapan button:hover {
-  background: #a37638;
+  background: #c49b63;
+  color: #fff;
+  transform: scale(1.03);
 }
+
 
 .list-ucapan {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
+
 .ucapan-card {
   text-align: left;
-  background: #fffaf3;
-  border: 1px solid #ead9bd;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 1rem;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  color: #fff;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
+
 .ucapan-card h4 {
   font-size: 1rem;
   font-weight: bold;
-  color: #b88c4a;
+  color: #ffffff;
 }
 .ucapan-card p {
   margin-top: 0.5rem;

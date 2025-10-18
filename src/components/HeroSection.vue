@@ -75,7 +75,7 @@ onBeforeUnmount(() => {
 .hero {
   position: relative;
   height: 100vh;
-  background: url('/img/hero-aji-indah.jpeg') center/cover no-repeat;
+  background: url('/img/bg-hero.jpeg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;

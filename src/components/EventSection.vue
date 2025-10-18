@@ -56,7 +56,7 @@ app.directive('scroll', vScroll)
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter&display=swap');
 
 .event-section {
-  background-color: #fffaf3;
+  background: url('/img/bg-batik-biru.jpeg') center/cover no-repeat;
   padding: 4rem 1.5rem;
   font-family: 'Inter', sans-serif;
   position: relative;
@@ -71,7 +71,6 @@ app.directive('scroll', vScroll)
   bottom: 0;
   left: -20%;
   right: -20%;
-  background: url('/img/bg-batik.jpg') center/cover no-repeat;
   opacity: 0.05;
   z-index: 0;
 }
@@ -86,7 +85,7 @@ app.directive('scroll', vScroll)
 .judul {
   font-family: 'Cinzel', serif;
   font-size: 2.3rem;
-  color: #b88c4a;
+  color: #ffffff;
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
@@ -99,14 +98,15 @@ app.directive('scroll', vScroll)
 }
 
 .event-card {
-  background: #fffdf8;
-  border: 1px solid #f0dfc4;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 1rem;
   padding: 2rem 1.5rem;
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  color: #fff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -124,9 +124,9 @@ app.directive('scroll', vScroll)
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
-  color: #b98b4e;
+  color: #ffffff;
   flex-shrink: 0;
-  box-shadow: 0 0 12px rgba(201, 161, 92, 0.3);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
 }
 
 .icon-wrap.resepsi {
@@ -140,20 +140,20 @@ app.directive('scroll', vScroll)
 .event-title {
   font-size: 1.3rem;
   font-weight: bold;
-  color: #c9a15c;
+  color: #ffffff;
   margin-bottom: 0.3rem;
 }
 
 .event-time {
   font-size: 1.05rem;
   margin-bottom: 0.4rem;
-  color: #4c2f1d;
+  color: #ffffff;
   line-height: 1.6;
 }
 
 .event-lokasi {
   font-size: 0.95rem;
-  color: #6e4a33;
+  color: #ffffff;
   font-style: italic;
 }
 

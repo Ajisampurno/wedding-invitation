@@ -31,13 +31,13 @@
     </button>
 
     <!-- Navigasi Section -->
-    <div v-if="!showCover" class="nav-sections">
+    <div v-if="!showCover && showNav" class="nav-sections">
       <button
         v-for="(section, i) in sections"
         :key="i"
         @click="scrollTo(section.id)"
       >
-        {{ section.label }}
+        <i :class="['fa-solid', section.icon]" style="font-size: 18px;"></i>
       </button>
     </div>
 
@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue"
+import { ref, onMounted, onUnmounted } from "vue"
 
 import HeroSection from "./components/HeroSection.vue"
 import SambutanSection from "./components/SambutanSection.vue"
@@ -73,17 +73,34 @@ const audioRef = ref(null)
 const isPlaying = ref(false)
 const showCover = ref(true)
 const isOpened = ref(false)
+const showNav = ref(false)
+// const toggleMusic = () => {
+//   if (!audioRef.value) return
+//   if (isPlaying.value) {
+//     audioRef.value.pause()
+//     isPlaying.value = false
+//   } else {
+//     audioRef.value.play()
+//     isPlaying.value = true
+//   }
+// }
 
-const toggleMusic = () => {
-  if (!audioRef.value) return
-  if (isPlaying.value) {
-    audioRef.value.pause()
-    isPlaying.value = false
-  } else {
-    audioRef.value.play()
-    isPlaying.value = true
-  }
+const handleScroll = () => {
+  const scrollY = window.scrollY
+  const viewportHeight = window.innerHeight
+  const fullHeight = document.body.scrollHeight
+
+  // Jika posisi scroll mendekati bawah (misal 200px dari akhir)
+  showNav.value = scrollY + viewportHeight >= fullHeight - 200
 }
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll)
+})
 
 const openInvitation = () => {
   isOpened.value = true
@@ -98,15 +115,15 @@ const afterOpen = () => {
 }
 
 const sections = [
-  { id: "hero", label: "Home" },
-  { id: "sambutan", label: "Sambutan" },
-  { id: "profil", label: "Mempelai" },
-  { id: "event", label: "Acara" },
-  { id: "map", label: "Lokasi" },
-  { id: "galery", label: "Galeri" },
-  { id: "ucapan", label: "Ucapan" },
-  { id: "konfirmasi", label: "Konfirmasi" },
-  { id: "footer", label: "Akhir" },
+  { id: "hero", icon: "fa-house" },
+  { id: "sambutan", icon: "fa-handshake" },
+  { id: "profil", icon: "fa-heart" },
+  { id: "event", icon: "fa-calendar-days" },
+  { id: "map", icon: "fa-map-location-dot" },
+  { id: "galery", icon: "fa-images" },
+  { id: "ucapan", icon: "fa-comment-dots" },
+  { id: "konfirmasi", icon: "fa-check-circle" },
+  { id: "footer", icon: "fa-star" },
 ]
 
 const scrollTo = (id) => {
@@ -285,5 +302,18 @@ const scrollTo = (id) => {
 }
 .nav-sections button:hover {
   background: #c49b63;
+}
+
+.nav-sections {
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: 95%;
+  justify-content: center;
+  padding: 8px;
+}
+
+.nav-sections button {
+  font-size: 14px;
+  padding: 6px 10px;
 }
 </style>

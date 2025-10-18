@@ -67,7 +67,7 @@ app.directive('scroll', vScroll)
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter&display=swap');
 
 .map-section {
-  background-color: #fffaf3;
+  background: url('/img/bg-batik-biru.jpeg') center/cover no-repeat;
   padding: 4rem 1.5rem;
   font-family: 'Inter', sans-serif;
   color: #4c2f1d;
@@ -82,7 +82,6 @@ app.directive('scroll', vScroll)
   bottom: -50px;
   left: -25%;
   right: -25%;
-  background: url('/img/bg-batik.jpg') center/cover no-repeat;
   opacity: 0.05;
   z-index: 0;
 }
@@ -99,17 +98,17 @@ app.directive('scroll', vScroll)
   font-family: 'Cinzel', serif;
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  color: #b88c4a;
+  color: #ffffff;
 }
 
 .deskripsi {
   font-size: 1.05rem;
   margin-bottom: 2rem;
-  color: #5c3d2e;
+  color: #ffffff;
 }
 
 .map-wrapper {
-  border: 4px solid #f3e3c0;
+  border: 4px solid #ffffff;
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(201, 161, 92, 0.15);
@@ -132,14 +131,14 @@ app.directive('scroll', vScroll)
 }
 
 .btn {
-  background-color: #c9a15c;
+  background-color: #848aff;
   color: #fffdf3;
   padding: 0.8rem 1.6rem;
   border-radius: 999px;
   font-weight: 600;
   text-decoration: none;
   transition: background 0.3s ease, transform 0.2s;
-  box-shadow: 0 4px 12px rgba(201, 161, 92, 0.25);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
 }
 .btn:hover {
   background-color: #b88c4a;

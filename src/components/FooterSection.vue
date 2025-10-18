@@ -10,8 +10,8 @@
   footer {
     text-align: center; 
     padding: 100px; 
-    background-color: #fffaf3; 
-    color: #4c2f1d; 
+    background-color: #cfddff; 
+    color: #ffffff; 
     font-family: 'Inter', sans-serif;
   }
 </style>

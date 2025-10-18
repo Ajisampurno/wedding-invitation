@@ -44,10 +44,10 @@ app.directive('scroll', vScroll)
 @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap');
 
 .sambutan.mewah {
-  background-color: #fffaf3;
+  background: url('/img/bg-batik-biru.jpeg') center/cover no-repeat;
   padding: 3.5rem 1.5rem;
   text-align: center;
-  color: #5c3d2e;
+  color: #ffffff;
   font-family: 'Inter', sans-serif;
   position: relative;
   overflow: hidden;
@@ -75,7 +75,7 @@ app.directive('scroll', vScroll)
 .arab {
   font-size: 2rem;
   font-weight: 500;
-  color: #c9a15c;
+  color: #ffffff;
   font-family: 'Scheherazade New', serif;
   line-height: 2.4rem;
   margin-bottom: 0.5rem;
@@ -85,7 +85,7 @@ app.directive('scroll', vScroll)
   font-family: 'Cinzel', serif;
   font-size: 1.6rem;
   font-weight: 700;
-  color: #b98b4e;
+  color: #ffffff;
   margin-bottom: 1rem;
   animation: glow 2s ease-in-out infinite alternate;
 }
@@ -93,7 +93,7 @@ app.directive('scroll', vScroll)
 .paragraf {
   font-size: 1.05rem;
   line-height: 1.85;
-  color: #4c2f1d;
+  color: #ffffff;
   margin-bottom: 1rem;
   font-weight: 400;
 }
@@ -122,13 +122,4 @@ app.directive('scroll', vScroll)
   transform: translateY(0) !important;
 }
 
-/* Glowing Salam */
-@keyframes glow {
-  0% {
-    text-shadow: 0 0 5px #d4ae74, 0 0 10px #c9a15c;
-  }
-  100% {
-    text-shadow: 0 0 15px #ffebb2, 0 0 25px #d7b87c;
-  }
-}
 </style>

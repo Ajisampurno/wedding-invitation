@@ -4,7 +4,7 @@
     <div class="pasangan-wrapper">
       <div class="pasangan fade-up" v-scroll>
         <img src="/img/aji.jpeg" class="foto" alt="Foto Aji" />
-        <h3 class="nama">Muhammad Aji Sampurno, S.Kom</h3>
+        <h3 class="nama">Aji Sampurno, S.Kom</h3>
         <p class="orangtua">Putra dari Bapak Witaqwin & Ibu Sri Sayekti</p>
       </div>
       <div class="pasangan fade-up delay" v-scroll>
@@ -42,7 +42,7 @@ app.directive('scroll', vScroll)
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@500;700&family=Inter&display=swap');
 
 .mempelai {
-  background-color: #fffaf3;
+  background: url('/img/bg-batik-biru.jpeg') center/cover no-repeat;
   padding: 4rem 1.5rem;
   color: #4a2d1f;
   font-family: 'Inter', sans-serif;
@@ -58,7 +58,7 @@ app.directive('scroll', vScroll)
   bottom: 0;
   left: -25%;
   right: -25%;
-  background: url('/img/bg-batik.jpg') center/cover no-repeat;
+  background: url('/img/bg-batik-biru.jpeg') center/cover no-repeat;
   opacity: 0.04;
   z-index: 0;
 }
@@ -67,7 +67,7 @@ app.directive('scroll', vScroll)
   font-family: 'Cinzel', serif;
   font-size: 2.2rem;
   margin-bottom: 3rem;
-  color: #b88c4a;
+  color: #ffffff;
   position: relative;
   z-index: 1;
 }
@@ -82,13 +82,14 @@ app.directive('scroll', vScroll)
 }
 
 .pasangan {
-  background-color: #fffaf3;
-  border: 1px solid #f0e0c8;
+  background-color: rgba(0, 0, 0, 0.4); /* hitam transparan 40% */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* border lembut */
   border-radius: 1rem;
   padding: 1.5rem;
   max-width: 280px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff; /* teks jadi putih biar kontras */
 }
 
 .pasangan:hover {
@@ -101,10 +102,9 @@ app.directive('scroll', vScroll)
   height: 200px;
   object-fit: cover;
   border-radius: 50% / 60%;
-  border: 4px solid #c9a15c;
   padding: 4px;
   background-color: #fffaf3;
-  box-shadow: 0 0 15px rgba(201, 161, 92, 0.25);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
   transition: transform 0.4s ease;
   animation: scaleIn 1.2s ease-out both;
 }
@@ -127,13 +127,13 @@ app.directive('scroll', vScroll)
 .nama {
   font-family: 'Great Vibes', cursive;
   font-size: 1.9rem;
-  color: #b88c4a;
+  color: #ffffff;
   margin: 0.5rem 0;
 }
 
 .orangtua {
   font-size: 0.95rem;
-  color: #5c3d2e;
+  color: #ffffff;
   font-weight: 400;
 }
 
