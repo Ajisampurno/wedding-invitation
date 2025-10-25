@@ -1,36 +1,35 @@
 <template>
   <div>
-    <!-- Cover -->
-    <div v-if="showCover" class="cover">
-      <!-- Kiri -->
-      <div
-        class="cover-half left"
-        :class="{ open: isOpened }"
-        @transitionend="afterOpen"
-      >
+    <!-- cover -->
+    <transition name="fade-cover">
+      <div v-if="showCover" class="cover floral-cover">
+        <div class="cover-content">
+          <h2 class="wedding-title">THE WEDDING OF</h2>
+          <h1 class="couple-names">AJI & INDAH</h1>
+
+          <p class="dear">
+            Dear:<br />
+            <span>{{ guestName || '(nama undangan)' }}</span>
+          </p>
+
+          <button @click="openInvitation" class="btn-click">
+            CLICK HERE!
+          </button>
+        </div>
       </div>
+    </transition>
 
-      <!-- Kanan -->
-      <div class="cover-half right" :class="{ open: isOpened }">
-      </div>
-
-      <!-- Tombol -->
-      <button v-if="!isOpened" @click="openInvitation" class="btn-open">
-        Buka Undangan
-      </button>
-    </div>
-
-    <!-- Audio -->
+    <!-- audio -->
     <audio ref="audioRef" loop>
       <source src="/music/wedding.mp3" type="audio/mpeg" />
     </audio>
 
-    <!-- Tombol Musik -->
+    <!-- tombol musik -->
     <button v-if="!showCover" @click="toggleMusic" class="btn-music">
       {{ isPlaying ? '🔊' : '🔇' }}
     </button>
 
-    <!-- Navigasi Section -->
+    <!-- navigasi -->
     <div v-if="!showCover && showNav" class="nav-sections">
       <button
         v-for="(section, i) in sections"
@@ -41,7 +40,7 @@
       </button>
     </div>
 
-    <!-- Konten -->
+    <!-- konten -->
     <div v-if="!showCover">
       <HeroSection id="hero" />
       <SambutanSection id="sambutan" />
@@ -72,29 +71,12 @@ import KonfirmasiSection from "./components/KonfirmasiSection.vue"
 const audioRef = ref(null)
 const isPlaying = ref(false)
 const showCover = ref(true)
-const isOpened = ref(false)
 const showNav = ref(false)
-// const toggleMusic = () => {
-//   if (!audioRef.value) return
-//   if (isPlaying.value) {
-//     audioRef.value.pause()
-//     isPlaying.value = false
-//   } else {
-//     audioRef.value.play()
-//     isPlaying.value = true
-//   }
-// }
-
-const handleScroll = () => {
-  const scrollY = window.scrollY
-  const viewportHeight = window.innerHeight
-  const fullHeight = document.body.scrollHeight
-
-  // Jika posisi scroll mendekati bawah (misal 200px dari akhir)
-  showNav.value = scrollY + viewportHeight >= fullHeight - 200
-}
+const guestName = ref('')
 
 onMounted(() => {
+  const params = new URLSearchParams(window.location.search)
+  guestName.value = params.get('to')
   window.addEventListener("scroll", handleScroll)
 })
 
@@ -102,16 +84,29 @@ onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll)
 })
 
-const openInvitation = () => {
-  isOpened.value = true
-  toggleMusic()
+const toggleMusic = () => {
+  if (!audioRef.value) return
+  if (isPlaying.value) {
+    audioRef.value.pause()
+    isPlaying.value = false
+  } else {
+    audioRef.value.play()
+    isPlaying.value = true
+  }
 }
 
-const afterOpen = () => {
-  // Sembunyikan cover setelah animasi selesai
+const openInvitation = () => {
+  toggleMusic()
   setTimeout(() => {
     showCover.value = false
-  }, 800)
+  }, 600)
+}
+
+const handleScroll = () => {
+  const scrollY = window.scrollY
+  const viewportHeight = window.innerHeight
+  const fullHeight = document.body.scrollHeight
+  showNav.value = scrollY + viewportHeight >= fullHeight - 200
 }
 
 const sections = [
@@ -128,84 +123,101 @@ const sections = [
 
 const scrollTo = (id) => {
   const el = document.getElementById(id)
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth" })
-  }
+  if (el) el.scrollIntoView({ behavior: "smooth" })
 }
 </script>
 
 <style>
-/* Cover */
-.cover {
+/* === Animasi Fade Cover === */
+.fade-cover-enter-active,
+.fade-cover-leave-active {
+  transition: opacity 0.8s ease;
+}
+.fade-cover-enter-from,
+.fade-cover-leave-to {
+  opacity: 0;
+}
+
+/* === Floral Cover === */
+.floral-cover {
+  background-image: url('/img/floral-blue-bg.jpg');
+  background-size: cover;
+  background-position: center;
   position: fixed;
   inset: 0;
   display: flex;
-  z-index: 2000;
-  overflow: hidden;
-  background: #000;
-}
-
-/* Bagian kiri & kanan */
-.cover-half {
-  flex: 1;
-  display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.8s ease-in-out;
-  position: relative;
-  background-size: cover;
-  background-position: center;
+  z-index: 2000;
+  text-align: center;
+  color: white;
+  font-family: 'Poppins', sans-serif;
 }
 
-.cover-half.left {
-  background-image: url('/img/cover-right.jpeg');
-  border-right: 2px solid #c49b63;
-}
-.cover-half.right {
-  background-image: url('/img/cover-left.png');
-  border-left: 2px solid #c49b63;
-}
-
-/* Overlay lembut agar gambar lebih elegan */
-.cover-half::after {
+.floral-cover::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0, 0, 30, 0.45);
+  z-index: 0;
 }
 
-/* Animasi buka */
-.cover-half.left.open {
-  transform: translateX(-100%);
-}
-.cover-half.right.open {
-  transform: translateX(100%);
+.cover-content {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 30px 40px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
 }
 
-/* Tombol Buka */
-.btn-open {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #c49b63;
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 18px;
+.wedding-title {
+  font-size: 20px;
   font-weight: 600;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: all 0.3s;
-  z-index: 5;
-}
-.btn-open:hover {
-  background: #8e6b3d;
-  transform: translateX(-50%) scale(1.05);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
 }
 
-/* Tombol Musik */
+.couple-names {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.dear {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.dear span {
+  display: block;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+/* Tombol Click Here */
+.btn-click {
+  background: #fff;
+  color: #1a3b6e;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.btn-click:hover {
+  background: #1a3b6e;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Musik & Navigasi */
 .btn-music {
   position: fixed;
   bottom: 20px;
@@ -230,53 +242,6 @@ const scrollTo = (id) => {
   transform: scale(1.1);
 }
 
-/* === Cover Mode Mobile === */
-@media (max-width: 768px) {
-  .cover {
-    flex-direction: column;
-  }
-
-  /* Sembunyikan separuh */
-  .cover-half.left,
-  .cover-half.right {
-    flex: none;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background-image: url('/img/cover-mobile.png');
-    background-size: cover;
-    background-position: center;
-  }
-
-  /* Matikan animasi slide kiri-kanan, ganti fade out */
-  .cover-half.left.open,
-  .cover-half.right.open {
-    transform: none;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-  }
-}
-
-/* Tombol Musik */
-.btn-music {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: #c49b63;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 15px;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: background 0.3s;
-}
-.btn-music:hover {
-  background: #8e6b3d;
-}
-
 /* Navigasi */
 .nav-sections {
   position: fixed;
@@ -292,28 +257,13 @@ const scrollTo = (id) => {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-.nav-sections button {
-  background: #f8f8f8;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.nav-sections button:hover {
-  background: #c49b63;
-}
-
-.nav-sections {
-  flex-wrap: wrap;
-  gap: 6px;
-  max-width: 95%;
-  justify-content: center;
-  padding: 8px;
-}
-
-.nav-sections button {
-  font-size: 14px;
-  padding: 6px 10px;
+/* Responsif */
+@media (max-width: 768px) {
+  .couple-names {
+    font-size: 28px;
+  }
+  .cover-content {
+    padding: 24px 28px;
+  }
 }
 </style>
