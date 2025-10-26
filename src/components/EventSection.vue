@@ -2,9 +2,7 @@
   <section class="invitation-section">
     <div class="invitation-content">
       <p>
-        Dengan segala kerendahan hati dan rasa syukur kepada-Nya, kami bermaksud mengundang
-        <br />
-        Saudara/Saudari untuk hadir di hari bahagia kami:
+        Dengan segala kerendahan hati dan rasa syukur kepada-Nya, kami bermaksud mengundang Saudara/Saudari untuk hadir di hari bahagia kami:
       </p>
       <div class="event-block">
         <h3>AKAD NIKAH</h3>
