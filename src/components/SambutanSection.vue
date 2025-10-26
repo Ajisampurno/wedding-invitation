@@ -3,17 +3,20 @@
     <div class="sambutan-overlay"></div>
     <div class="container">
       <br><br><br>
-      <p class="paragraf fade-up" v-scroll>
+      <p class="paragraf-surat fade-up" v-scroll>
         “Segala sesuatu Kami ciptakan berpasang-pasangan agar kamu mengingat (kebesaran Allah).”
       </p>
       <p class="salam fade-up" v-scroll>
         (QS. Adz-Dzariyat: 49)
       </p>
       <br>
-      <p class="paragraf fade-up" v-scroll>
+      <div class="image-ring" v-scroll>
+        <img src="/img/rings.png" alt="rings">
+      </div>
+      <p class="paragraf-inggris fade-up" v-scroll>
         Marriage is the proper way to establishing correct and permissible relationships between men and women.
       </p>
-      <br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br>
     </div>
   </section>
 </template>
@@ -26,10 +29,8 @@ const vScroll = {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Jika elemen terlihat, tambahkan class animasi
           el.classList.add('in-view')
         } else {
-          // Jika keluar dari viewport, hilangkan lagi agar bisa animasi ulang
           el.classList.remove('in-view')
         }
       },
@@ -92,8 +93,22 @@ app.directive('scroll', vScroll)
   animation: glow 2s ease-in-out infinite alternate;
 }
 
-.paragraf {
+.paragraf-surat {
+  font-family: 'Cinzel', serif;
   font-size: 1.05rem;
+  line-height: 1.85;
+  color: #000000;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.image-ring img {
+  width: 200px;
+  align-items: center;
+}
+
+.paragraf-inggris {
+  font-size: 0.85rem;
   line-height: 1.85;
   color: #000000;
   margin-bottom: 1rem;
@@ -123,4 +138,11 @@ app.directive('scroll', vScroll)
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+
+.image-ring {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
 </style>
