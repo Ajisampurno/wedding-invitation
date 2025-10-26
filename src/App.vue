@@ -44,9 +44,12 @@
     <div v-if="!showCover">
       <HeroSection id="hero" />
       <SambutanSection id="sambutan" />
-      <ProfileMempelaiSection id="profil" />
+      <!-- <ProfileMempelaiSection id="profil" /> -->
+      <MempelaiPria id="profil-pria" />
+      <MempelaiWanita id="profil-wanita" />
+      <HitungMundur id="countdown" />
       <EventSection id="event" />
-      <MapSection id="map" />
+      <!-- <MapSection id="map" /> -->
       <GalerySection id="galery" />
       <UcapanSection id="ucapan" />
       <KonfirmasiSection id="konfirmasi" />
@@ -60,9 +63,12 @@ import { ref, onMounted, onUnmounted } from "vue"
 
 import HeroSection from "./components/HeroSection.vue"
 import SambutanSection from "./components/SambutanSection.vue"
-import ProfileMempelaiSection from "./components/ProfileMempelaiSection.vue"
+// import ProfileMempelaiSection from "./components/ProfileMempelaiSection.vue"
+import MempelaiPria from "./components/MempelaiPria.vue"
+import MempelaiWanita from "./components/MempelaiWanita.vue"
+import HitungMundur from "./components/HitungMundur.vue"
 import EventSection from "./components/EventSection.vue"
-import MapSection from "./components/MapSection.vue"
+// import MapSection from "./components/MapSection.vue"
 import GalerySection from "./components/GalerySection.vue"
 import UcapanSection from "./components/UcapanSection.vue"
 import FooterSection from "./components/FooterSection.vue"
@@ -112,9 +118,12 @@ const handleScroll = () => {
 const sections = [
   { id: "hero", icon: "fa-house" },
   { id: "sambutan", icon: "fa-handshake" },
-  { id: "profil", icon: "fa-heart" },
+  // { id: "profil", icon: "fa-heart" },
+  { id: "profil-pria", icon: "fa-male" },
+  { id: "profil-wanita", icon: "fa-female" },
   { id: "event", icon: "fa-calendar-days" },
-  { id: "map", icon: "fa-map-location-dot" },
+  {id: "countdown", icon: "fa-hourglass-half" },
+  // { id: "map", icon: "fa-map-location-dot" },
   { id: "galery", icon: "fa-images" },
   { id: "ucapan", icon: "fa-comment-dots" },
   { id: "konfirmasi", icon: "fa-check-circle" },

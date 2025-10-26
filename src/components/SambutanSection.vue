@@ -1,18 +1,19 @@
 <template>
-  <section class="sambutan mewah">
+  <section class="sambutan">
+    <div class="sambutan-overlay"></div>
     <div class="container">
-      <p class="arab fade-up" v-scroll>
-        السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ ٱللَّٰهِ وَبَرَكَاتُهُ
+      <br><br><br>
+      <p class="paragraf fade-up" v-scroll>
+        “Segala sesuatu Kami ciptakan berpasang-pasangan agar kamu mengingat (kebesaran Allah).”
       </p>
       <p class="salam fade-up" v-scroll>
-        Assalamu’alaikum Warahmatullahi Wabarakatuh
+        (QS. Adz-Dzariyat: 49)
       </p>
+      <br>
       <p class="paragraf fade-up" v-scroll>
-        Dengan penuh rasa syukur dan cinta, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri hari bahagia dalam pernikahan kami:
+        Marriage is the proper way to establishing correct and permissible relationships between men and women.
       </p>
-      <p class="paragraf fade-up" v-scroll>
-        Kehadiran dan doa restu Anda merupakan kehormatan serta kebahagiaan bagi kami.
-      </p>
+      <br><br><br><br><br><br><br>
     </div>
   </section>
 </template>
@@ -25,11 +26,14 @@ const vScroll = {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // Jika elemen terlihat, tambahkan class animasi
           el.classList.add('in-view')
-          observer.unobserve(el)
+        } else {
+          // Jika keluar dari viewport, hilangkan lagi agar bisa animasi ulang
+          el.classList.remove('in-view')
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 } // sensitivitas 10%
     )
     observer.observe(el)
   }
@@ -43,26 +47,16 @@ app.directive('scroll', vScroll)
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap');
 
-.sambutan.mewah {
-  background: url('/img/bg-batik-biru.jpeg') center/cover no-repeat;
-  padding: 3.5rem 1.5rem;
-  text-align: center;
-  color: #ffffff;
-  font-family: 'Inter', sans-serif;
+.sambutan {
   position: relative;
+  height: 100vh;
+  background: url('/img/bg-flower.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-}
-
-.sambutan.mewah::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -25%;
-  right: -25%;
-  background: url('/images/batik-border-light.svg') center/cover no-repeat;
-  opacity: 0.06;
-  z-index: 0;
+  color: #2f5480;
+  text-align: center;
 }
 
 .sambutan .container {
@@ -72,10 +66,18 @@ app.directive('scroll', vScroll)
   z-index: 1;
 }
 
+.sambutan-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
 .arab {
   font-size: 2rem;
   font-weight: 500;
-  color: #ffffff;
+  color: #000000;
   font-family: 'Scheherazade New', serif;
   line-height: 2.4rem;
   margin-bottom: 0.5rem;
@@ -85,7 +87,7 @@ app.directive('scroll', vScroll)
   font-family: 'Cinzel', serif;
   font-size: 1.6rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #000000;
   margin-bottom: 1rem;
   animation: glow 2s ease-in-out infinite alternate;
 }
@@ -93,7 +95,7 @@ app.directive('scroll', vScroll)
 .paragraf {
   font-size: 1.05rem;
   line-height: 1.85;
-  color: #ffffff;
+  color: #000000;
   margin-bottom: 1rem;
   font-weight: 400;
 }
@@ -121,5 +123,4 @@ app.directive('scroll', vScroll)
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
-
 </style>

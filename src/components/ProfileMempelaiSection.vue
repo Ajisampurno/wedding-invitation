@@ -1,16 +1,21 @@
 <template>
   <section class="mempelai">
+    <div class="mempelai-overlay"></div>
     <h2 class="judul fade-up" v-scroll>Calon Pengantin</h2>
     <div class="pasangan-wrapper">
       <div class="pasangan fade-up" v-scroll>
-        <img src="/img/aji.jpeg" class="foto" alt="Foto Aji" />
+        <div class="frame">
+          <img src="/img/aji.jpeg" class="foto" alt="Foto Aji" />
+        </div>
         <h3 class="nama">Aji Sampurno, S.Kom</h3>
         <p class="orangtua">Putra dari Bapak Witaqwin & Ibu Sri Sayekti</p>
       </div>
       <div class="pasangan fade-up delay" v-scroll>
-        <img src="/img/indah.jpeg" class="foto" alt="Foto Indah" />
+        <div class="frame">
+          <img src="/img/indah.jpeg" class="foto" alt="Foto Indah" />
+        </div>
         <h3 class="nama">Indah Larasati, S.T.</h3>
-        <p class="orangtua">Putri dari Bapak Sukarno Alm & Ibu Rijem Alm</p>
+        <p class="orangtua">Putri dari Bapak Sukarno (Alm) & Ibu Rijem (Almh)</p>
       </div>
     </div>
   </section>
@@ -23,12 +28,10 @@ const vScroll = {
   mounted(el) {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add('in-view')
-          observer.unobserve(el)
-        }
+        if (entry.isIntersecting) el.classList.add('in-view')
+        else el.classList.remove('in-view')
       },
-      { threshold: 0.1 }
+      { threshold: 0.2 }
     )
     observer.observe(el)
   }
@@ -42,7 +45,7 @@ app.directive('scroll', vScroll)
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@500;700&family=Inter&display=swap');
 
 .mempelai {
-  background: url('/img/bg-batik-biru.jpeg') center/cover no-repeat;
+  background: url('/img/bg-flower.png') center/cover no-repeat;
   padding: 4rem 1.5rem;
   color: #4a2d1f;
   font-family: 'Inter', sans-serif;
@@ -51,25 +54,18 @@ app.directive('scroll', vScroll)
   text-align: center;
 }
 
-.mempelai::before {
-  content: '';
+.mempelai-overlay {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -25%;
-  right: -25%;
-  background: url('/img/bg-batik-biru.jpeg') center/cover no-repeat;
-  opacity: 0.04;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(3px);
   z-index: 0;
 }
 
 .judul {
-  font-family: 'Cinzel', serif;
-  font-size: 2.2rem;
+  font-family: 'Great Vibes', cursive;
   margin-bottom: 3rem;
-  color: #ffffff;
-  position: relative;
-  z-index: 1;
+  color: #2f5480;
 }
 
 .pasangan-wrapper {
@@ -81,63 +77,59 @@ app.directive('scroll', vScroll)
   z-index: 1;
 }
 
-.pasangan {
-  background-color: rgba(0, 0, 0, 0.4); /* hitam transparan 40% */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* border lembut */
-  border-radius: 1rem;
-  padding: 1.5rem;
-  max-width: 280px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: #fff; /* teks jadi putih biar kontras */
-}
-
 .pasangan:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* === FRAME FOTO === */
+.frame {
+  position: relative;
+  width: 240px;  /* diperbesar */
+  height: 240px;
+  margin: 0 auto 1.5rem;
+}
+
+.frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('/img/frame-bunga.png') center/contain no-repeat;
+  background-size: contain;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .foto {
-  width: 160px;
-  height: 200px;
   object-fit: cover;
-  border-radius: 50% / 60%;
-  padding: 4px;
-  background-color: #fffaf3;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
   transition: transform 0.4s ease;
-  animation: scaleIn 1.2s ease-out both;
 }
 
 .pasangan:hover .foto {
-  transform: scale(1.05);
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
-@keyframes scaleIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.8) translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
+/* === TEKS === */
 .nama {
+  color: #2f5480;
   font-family: 'Great Vibes', cursive;
-  font-size: 1.9rem;
-  color: #ffffff;
-  margin: 0.5rem 0;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .orangtua {
-  font-size: 0.95rem;
-  color: #ffffff;
+  font-size: 1rem;
+  color: #2f5480;
   font-weight: 400;
 }
 
-/* Animasi saat scroll */
+/* === Animasi Scroll === */
 .fade-up {
   opacity: 0;
   transform: translateY(40px);
@@ -149,24 +141,29 @@ app.directive('scroll', vScroll)
 }
 
 .in-view {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Responsiveness */
+/* Responsif */
 @media (max-width: 768px) {
   .pasangan-wrapper {
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .judul {
-    font-size: 1.8rem;
+    font-size: 2.7rem;
+  }
+
+  .frame {
+    width: 350px;
+    height: 350px;
   }
 
   .foto {
-    width: 130px;
-    height: 170px;
+    width: 50%;
+    height: 50%;
   }
 }
 </style>

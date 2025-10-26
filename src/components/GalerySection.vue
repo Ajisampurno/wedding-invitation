@@ -1,7 +1,7 @@
 <template>
   <section class="galeri-section">
     <div class="container">
-      <h2 class="judul fade-up" v-scroll>Galeri Kenangan</h2>
+      <h2 class="judul fade-up" v-scroll>Our Gallery</h2>
       <p class="deskripsi fade-up delay" v-scroll>
         Beberapa momen kebersamaan kami yang penuh kenangan.
       </p>
@@ -34,12 +34,18 @@ import { ref, onMounted } from 'vue'
 
 // Data foto galeri
 const photos = [
-  '/img/gallery1.jpeg',
-  '/img/gallery2.jpeg',
-  '/img/gallery3.jpeg',
-  '/img/gallery4.jpeg',
-  '/img/gallery5.jpeg',
-  '/img/gallery6.jpeg'
+  '/img/gallery-1.jpg',
+  '/img/gallery-2.jpg',
+  '/img/gallery-3.jpg',
+  '/img/gallery-4.jpg',
+  '/img/gallery-5.jpg',
+  '/img/gallery-6.jpg',
+  '/img/gallery-7.jpg',
+  '/img/gallery-8.jpg',
+  '/img/gallery-9.jpg',
+  '/img/gallery-10.jpg',
+  '/img/gallery-11.jpg',
+  '/img/gallery-12.jpg',
 ]
 
 // Modal logic
@@ -75,7 +81,7 @@ onMounted(() => {
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter&display=swap');
 
 .galeri-section {
-  background: url('/img/bg-batik-biru.jpeg') center/cover no-repeat;
+  background: url('/img/floral-blue-bg.jpg') center/cover no-repeat;
   padding: 4rem 1.5rem;
   position: relative;
   overflow: hidden;
@@ -87,11 +93,9 @@ onMounted(() => {
 .galeri-section::before {
   content: '';
   position: absolute;
-  top: -40px;
-  bottom: -40px;
-  left: -20%;
-  right: -20%;
-  opacity: 0.05;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(3px);
   z-index: 0;
 }
 
@@ -103,42 +107,59 @@ onMounted(() => {
 }
 
 .judul {
-  font-family: 'Cinzel', serif;
+  font-family: 'Great Vibes', cursive;
   font-size: 2.2rem;
   margin-bottom: 1rem;
-  color: #ffffff;
+  color: #2f5480;
 }
 
 .deskripsi {
   font-size: 1.05rem;
   margin-bottom: 2.5rem;
-  color: #ffffff;
+  color: #2f5480;
 }
 
 .galeri-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(2, 1fr); /* fix 2 kolom */
+  gap: 1rem;
   padding: 0 1rem;
+  justify-items: center;
 }
 
 .foto-wrapper {
   overflow: hidden;
   border-radius: 1rem;
   border: 4px solid #ffffff;
-  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   transition: transform 0.3s ease;
+  width: 100%;
+  aspect-ratio: 1 / 1;
 }
+
 .foto-wrapper:hover {
   transform: scale(1.03);
 }
+
 .foto {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
 
+/* Responsive (HP tetap 2 kolom tapi lebih rapat) */
+@media (max-width: 600px) {
+  .galeri-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .foto-wrapper {
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 0.7rem;
+  }
 }
 
 /* Modal */
@@ -192,29 +213,4 @@ onMounted(() => {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
-
-/* Responsive */
-@media (max-width: 600px) {
-  .galeri-grid {
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-    gap: 0.4rem;
-  }
-
-  .foto-wrapper {
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    border-radius: 0.6rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .foto-wrapper:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
-
-  .foto {
-    border-radius: 0.6rem;
-  }
-}
-
 </style>

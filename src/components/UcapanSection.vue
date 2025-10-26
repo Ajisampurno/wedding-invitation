@@ -1,15 +1,17 @@
 <template>
   <section class="ucapan-section">
     <div class="container">
-      <h2 class="judul fade-up" v-scroll>Ucapan & Doa</h2>
-      <p class="deskripsi fade-up delay" v-scroll>
-        Silakan tinggalkan ucapan dan doa terbaik untuk kami.
-      </p>
+      <div class="header">
+        <h2 class="judul fade-up" v-scroll>Ucapan & Doa</h2>
+        <p class="deskripsi fade-up delay" v-scroll>
+          Silakan tinggalkan ucapan dan doa terbaik untuk kami.
+        </p>
+      </div>
 
       <form class="form-ucapan fade-up" @submit.prevent="submitUcapan" v-scroll>
         <input v-model="nama" type="text" placeholder="Nama Anda" required />
         <textarea v-model="pesan" placeholder="Tulis ucapan..." required></textarea>
-        <button type="submit">Kirim</button>
+        <button class="btn-kirim" type="submit">Kirim</button>
       </form>
 
       <div class="list-ucapan">
@@ -86,8 +88,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Cinzel:wght@600&display=swap');
 
 .ucapan-section {
-  background: url('/img/bg-batik-biru.jpeg') center/cover no-repeat;
-  padding: 4rem 1.5rem;
+  background: url('/img/bg-event.jpg') center/cover no-repeat;
+  padding: 4rem 0rem;
   color: #4a2d1f;
   font-family: 'Inter', sans-serif;
   position: relative;
@@ -114,16 +116,24 @@
 }
 
 .judul {
-  font-family: 'Cinzel', serif;
-  font-size: 2.2rem;
+  background: rgba(70, 73, 121, 0.7);
   color: #ffffff;
-  margin-bottom: 1rem;
+  border-radius: 0 50px 50px 0; /* kiri datar, kanan melengkung */
+  padding: 1.5rem 2rem;
+  margin-left: 0;
+  margin-right: 60px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  font-family: 'Great Vibes', cursive;
+  text-align: left;
+  margin-top: 0;
 }
 
 .deskripsi {
   font-size: 1.05rem;
   margin-bottom: 2rem;
-  color: #ffffff;
+  color: #000000;
 }
 
 .form-ucapan {
@@ -131,20 +141,23 @@
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 2.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .form-ucapan input,
 .form-ucapan textarea {
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  font-family: inherit;
-  font-size: 1rem;
-  background: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+}
+
+.form-ucapan .btn-kirim {
+  background: #2f5480;
 }
 
 /* Placeholder lembut */
@@ -162,15 +175,15 @@
 .form-ucapan input:focus,
 .form-ucapan textarea:focus {
   outline: none;
-  border-color: #c49b63;
-  background: rgba(0, 0, 0, 0.55);
+  border-color: #2f5480;
+  background: rgba(255, 255, 255, 0.55);
 }
 
 /* Tombol Transparan */
 .form-ucapan button {
   background: rgba(255, 255, 255, 0.15);
   color: #fffaf3;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(128, 147, 255, 0.3);
   padding: 0.75rem 1rem;
   border-radius: 6px;
   font-weight: bold;
@@ -181,7 +194,7 @@
 
 /* Hover emas */
 .form-ucapan button:hover {
-  background: #c49b63;
+  background: #2f5480;
   color: #fff;
   transform: scale(1.03);
 }
@@ -195,12 +208,12 @@
 
 .ucapan-card {
   text-align: left;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(128, 147, 255, 0.3);
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  color: #fff;
+  color: #000000;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
 }
@@ -208,7 +221,7 @@
 .ucapan-card h4 {
   font-size: 1rem;
   font-weight: bold;
-  color: #ffffff;
+  color: #000000;
 }
 .ucapan-card p {
   margin-top: 0.5rem;
@@ -241,7 +254,7 @@
   width: 6px;
 }
 .list-ucapan::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.2);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
 }
 .list-ucapan::-webkit-scrollbar-track {
@@ -251,7 +264,7 @@
 /* Responsif */
 @media (max-width: 600px) {
   .judul {
-    font-size: 1.8rem;
+    font-size: 2.7rem;
   }
   .form-ucapan input,
   .form-ucapan textarea {
