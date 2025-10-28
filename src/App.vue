@@ -51,6 +51,7 @@
       <EventSection id="event" />
       <!-- <MapSection id="map" /> -->
       <GalerySection id="galery" />
+      <WeggingGiftSection id="wedding-gift" />
       <UcapanSection id="ucapan" />
       <KonfirmasiSection id="konfirmasi" />
       <FooterSection id="footer" />
@@ -70,6 +71,7 @@ import HitungMundur from "./components/HitungMundur.vue"
 import EventSection from "./components/EventSection.vue"
 // import MapSection from "./components/MapSection.vue"
 import GalerySection from "./components/GalerySection.vue"
+import WeggingGiftSection from "./components/WeddingGiftSection.vue"
 import UcapanSection from "./components/UcapanSection.vue"
 import FooterSection from "./components/FooterSection.vue"
 import KonfirmasiSection from "./components/KonfirmasiSection.vue"
@@ -125,6 +127,7 @@ const sections = [
   {id: "countdown", icon: "fa-hourglass-half" },
   // { id: "map", icon: "fa-map-location-dot" },
   { id: "galery", icon: "fa-images" },
+  { id: "wedding-gift ", icon: "fa-envelope-open-text" },
   { id: "ucapan", icon: "fa-comment-dots" },
   { id: "konfirmasi", icon: "fa-check-circle" },
   { id: "footer", icon: "fa-star" },
@@ -136,7 +139,7 @@ const scrollTo = (id) => {
 }
 </script>
 
-<style>
+<style scoped>
 /* === Animasi Fade Cover === */
 .fade-cover-enter-active,
 .fade-cover-leave-active {
