@@ -54,6 +54,7 @@
       <WeggingGiftSection id="wedding-gift" />
       <UcapanSection id="ucapan" />
       <KonfirmasiSection id="konfirmasi" />
+      <PenutupSection id="penutup" />
       <FooterSection id="footer" />
     </div>
   </div>
@@ -73,6 +74,7 @@ import EventSection from "./components/EventSection.vue"
 import GalerySection from "./components/GalerySection.vue"
 import WeggingGiftSection from "./components/WeddingGiftSection.vue"
 import UcapanSection from "./components/UcapanSection.vue"
+import PenutupSection from "./components/PenutupSection.vue"
 import FooterSection from "./components/FooterSection.vue"
 import KonfirmasiSection from "./components/KonfirmasiSection.vue"
 
