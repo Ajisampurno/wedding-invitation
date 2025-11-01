@@ -103,8 +103,8 @@ app.directive('scroll', vScroll)
 }
 
 .save-btn {
-  background: #fff;
-  color: #91a7c7;
+  background: #2f5480;
+  color: #fff;
   border: none;
   padding: 0.6rem 1.8rem;
   border-radius: 999px;
@@ -115,7 +115,7 @@ app.directive('scroll', vScroll)
 }
 
 .save-btn:hover {
-  background: #f1f5f9;
+  background: #8bc5ff;
   transform: scale(1.05);
 }
 

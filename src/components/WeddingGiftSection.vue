@@ -1,15 +1,15 @@
 <template>
-  <section class="wedding-gift-section" id="wedding-gift">
-    <div class="gift-container fade-up">
-      <h2 class="gift-title">WEDDING GIFT</h2>
+  <section class="wedding-gift-section" id="wedding-gift" ref="giftSection">
+    <div class="gift-container reveal-item">
+      <h2 class="gift-title reveal-item">WEDDING GIFT</h2>
 
-      <p class="gift-text">
+      <p class="gift-text reveal-item">
         Doa baik dan kebahagiaan adalah karunia yang sangat berarti bagi kami.
         Namun, apabila memberi materi merupakan ungkapan kebahagiaan bersama,
         Anda dapat mengirimkannya kepada kami melalui media di bawah ini.
       </p>
 
-      <div class="gift-box">
+      <div class="gift-box reveal-item">
         <p class="gift-label">
           🎁 Kado: ke alamat mempelai wanita<br />
           <span class="gift-detail">
@@ -19,7 +19,7 @@
         </p>
       </div>
 
-      <div class="gift-box">
+      <div class="gift-box reveal-item">
         <p class="gift-label">🏦 Rekening Bank:</p>
         <p class="gift-detail">
           Mandiri: <strong>1710017514491 (Indah Larasati)</strong><br />
@@ -31,7 +31,31 @@
 </template>
 
 <script setup>
-// Tidak ada logic dinamis di sini, jadi kosong
+import { ref, onMounted } from 'vue'
+
+const giftSection = ref(null)
+
+const addScrollAnimation = () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active')
+        } else {
+          entry.target.classList.remove('active') // hapus ini jika ingin tetap tampil saat sudah muncul
+        }
+      })
+    },
+    { threshold: 0.2 }
+  )
+
+  const elements = giftSection.value.querySelectorAll('.reveal-item')
+  elements.forEach((el) => observer.observe(el))
+}
+
+onMounted(() => {
+  addScrollAnimation()
+})
 </script>
 
 <style scoped>
@@ -47,7 +71,7 @@
   position: relative;
 }
 
-/* efek lembut di atas background */
+/* Efek blur putih lembut */
 .wedding-gift-section::before {
   content: '';
   position: absolute;
@@ -56,6 +80,22 @@
   backdrop-filter: blur(6px);
   z-index: 0;
 }
+
+/* ======================== */
+/*   SCROLL REVEAL EFFECT   */
+/* ======================== */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.reveal-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ======================== */
 
 .gift-container {
   position: relative;

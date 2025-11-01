@@ -115,13 +115,17 @@ onMounted(() => {
 }
 
 .judul {
-  font-family: 'Great Vibes', cursive;
-  color: #848aff;
-  font-size: 2.4rem;
+  font-family: 'Cinzel', serif;
+  color: #2f5480;
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
 }
 
 .deskripsi {
-  color: #222;
+  color: #2f5480;
   font-size: 1.05rem;
   margin-bottom: 2rem;
 }

@@ -25,7 +25,7 @@
     </audio>
 
     <!-- tombol musik -->
-    <button v-if="!showCover" @click="toggleMusic" class="btn-music">
+    <button v-if="!showCover && !showNav" @click="toggleMusic" class="btn-music">
       {{ isPlaying ? '🔊' : '🔇' }}
     </button>
 
@@ -55,7 +55,7 @@
       <UcapanSection id="ucapan" />
       <KonfirmasiSection id="konfirmasi" />
       <PenutupSection id="penutup" />
-      <FooterSection id="footer" />
+      <!-- <FooterSection id="footer" /> -->
     </div>
   </div>
 </template>
@@ -75,7 +75,7 @@ import GalerySection from "./components/GalerySection.vue"
 import WeggingGiftSection from "./components/WeddingGiftSection.vue"
 import UcapanSection from "./components/UcapanSection.vue"
 import PenutupSection from "./components/PenutupSection.vue"
-import FooterSection from "./components/FooterSection.vue"
+// import FooterSection from "./components/FooterSection.vue"
 import KonfirmasiSection from "./components/KonfirmasiSection.vue"
 
 const audioRef = ref(null)
@@ -132,7 +132,7 @@ const sections = [
   { id: "wedding-gift ", icon: "fa-envelope-open-text" },
   { id: "ucapan", icon: "fa-comment-dots" },
   { id: "konfirmasi", icon: "fa-check-circle" },
-  { id: "footer", icon: "fa-star" },
+  // { id: "footer", icon: "fa-star" },
 ]
 
 const scrollTo = (id) => {
@@ -248,7 +248,6 @@ const scrollTo = (id) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: background 0.3s, transform 0.2s;
 }
 .btn-music:hover {
@@ -278,6 +277,14 @@ const scrollTo = (id) => {
   }
   .cover-content {
     padding: 24px 28px;
+  }
+  .nav-sections {
+    bottom: 10px;
+    padding: 6px 10px;
+    gap: 6px;
+  }
+  .nav-sections button i {
+    font-size: 16px;
   }
 }
 </style>

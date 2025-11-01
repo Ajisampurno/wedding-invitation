@@ -1,10 +1,11 @@
 <template>
-  <section class="invitation-section">
-    <div class="invitation-content">
-      <p>
+  <section class="invitation-section" ref="invitationSection">
+    <div class="invitation-content reveal-item">
+      <p class="intro-text reveal-item">
         Dengan segala kerendahan hati dan rasa syukur kepada-Nya, kami bermaksud mengundang Saudara/Saudari untuk hadir di hari bahagia kami:
       </p>
-      <div class="event-block">
+
+      <div class="event-block reveal-item">
         <h3>AKAD NIKAH</h3>
         <p class="date">
           <i class="fa fa-clock"></i> Senin, 29 Desember 2025 (07.30 WIB)
@@ -15,7 +16,7 @@
         </p>
       </div>
 
-      <div class="event-block">
+      <div class="event-block reveal-item">
         <h3>RESEPSI PERNIKAHAN</h3>
         <p class="date">
           <i class="fa fa-clock"></i> Senin, 29 Desember 2025 (10.00 WIB)
@@ -27,9 +28,9 @@
       </div>
 
       <a
-        href="https://www.google.com/maps/place/7%C2%B039'56.6%22S+111%C2%B018'29.0%22E/@-7.665723,111.3054801,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-7.665723!4d111.308055?hl=id&entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D"
+        href="https://www.google.com/maps/place/7%C2%B039'56.6%22S+111%C2%B018'29.0%22E/@-7.665723,111.3054801,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-7.665723!4d111.308055?hl=id"
         target="_blank"
-        class="map-button"
+        class="map-button reveal-item"
       >
         <i class="fa fa-map-pin"></i> Lokasi acara (g-maps link)
       </a>
@@ -38,29 +39,63 @@
 </template>
 
 <script setup>
-// Tidak ada script tambahan, semua statis
+import { ref, onMounted } from 'vue'
+
+const invitationSection = ref(null)
+
+const addScrollAnimation = () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active')
+        } else {
+          entry.target.classList.remove('active') // Hapus baris ini jika ingin animasi TIDAK hilang saat discroll ke atas
+        }
+      })
+    },
+    { threshold: 0.2 }
+  )
+
+  const elements = invitationSection.value.querySelectorAll('.reveal-item')
+  elements.forEach((el) => observer.observe(el))
+}
+
+onMounted(() => {
+  addScrollAnimation()
+})
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Great+Vibes&family=Inter&display=swap');
-
 .invitation-section {
   background: url('/img/bg-event.jpg') center/cover no-repeat;
   height: 85vh;
   display: flex;
-  color: #2d2d2d;
+  color: #2f5480;
   position: relative;
   overflow: hidden;
   padding: 3rem 1.5rem;
 }
-
-
 
 .invitation-content {
   position: relative;
   z-index: 1;
   margin: auto;
 }
+
+/* ✅ SCROLL REVEAL ANIMATION */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.reveal-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================ */
 
 .intro-text {
   text-align: center;
@@ -81,9 +116,10 @@
 }
 
 .event-block h3 {
+  font-family: 'Cinzel', serif;
+  color: #2f5480;
   font-size: 1.1rem;
   letter-spacing: 1px;
-  color: #1d1d1d;
   margin-bottom: 0.6rem;
 }
 
@@ -96,7 +132,7 @@
 .location {
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #444;
+  color: #000000;
 }
 
 .map-button {

@@ -1,7 +1,13 @@
 <template>
-  <section class="event-section">
-    <div class="countdown-container">
-      <div class="time-box" v-for="(value, label) in timeLeft" :key="label">
+  <section class="event-section reveal" ref="eventSection">
+    <h2 class="judul reveal-item">Menuju Hari Bahagia</h2>
+
+    <div class="countdown-container reveal-item">
+      <div
+        class="time-box reveal-item"
+        v-for="(value, label) in timeLeft"
+        :key="label"
+      >
         <div class="time-value">{{ value.toString().padStart(2, '0') }}</div>
         <div class="time-label">{{ label }}</div>
       </div>
@@ -35,21 +41,41 @@ const updateCountdown = () => {
   }
 }
 
+const eventSection = ref(null)
+
+const addScrollAnimation = () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active')
+        } else {
+          entry.target.classList.remove('active')
+        }
+      })
+    },
+    { threshold: 0.2 }
+  )
+
+  const elements = eventSection.value.querySelectorAll('.reveal-item')
+  elements.forEach((el) => observer.observe(el))
+}
+
 onMounted(() => {
   updateCountdown()
   timer = setInterval(updateCountdown, 1000)
+  addScrollAnimation()
 })
 
 onUnmounted(() => clearInterval(timer))
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
-
 .event-section {
   background: url('/img/bg-event.jpg') center/cover no-repeat;
   height: 85vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: 'Inter', sans-serif;
@@ -58,53 +84,73 @@ onUnmounted(() => clearInterval(timer))
   backdrop-filter: blur(3px);
 }
 
+/* ============================= */
+/*      SCROLL REVEAL EFFECT     */
+/* ============================= */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease-out;
+}
+
+.reveal-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .countdown-container {
   display: flex;
   gap: 0.8rem;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 1rem 1.7rem;
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.judul {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.8rem;
+  color: #2f5480;
+  margin-bottom: 18px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
 
 .time-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #111;
+  background: rgba(17, 17, 17, 0.85);
   color: #fff;
-  border-radius: 6px;
-  width: 60px;
-  padding: 10px 0;
-  box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.1),
-              0 4px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  width: 62px;
+  padding: 12px 0;
+  box-shadow: inset 0 -2px 0 rgba(255,255,255,0.1),
+              0 4px 10px rgba(0,0,0,0.4);
+  backdrop-filter: blur(5px);
 }
 
 .time-value {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
   letter-spacing: 1px;
 }
 
 .time-label {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   margin-top: 4px;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
-/* Responsif untuk tampilan HP */
+/* HP / Mobile */
 @media (max-width: 600px) {
-  .time-box {
-    width: 50px;
-    padding: 8px 0;
-  }
-  .time-value {
-    font-size: 1.2rem;
-  }
-  .countdown-container {
-    gap: 0.5rem;
-  }
+  .judul { font-size: 2.2rem; }
+  .time-box { width: 50px; padding: 8px 0; }
+  .time-value { font-size: 1.3rem; }
+  .countdown-container { gap: 0.5rem; }
 }
 </style>
