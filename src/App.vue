@@ -237,7 +237,7 @@ const scrollTo = (id) => {
   bottom: 20px;
   right: 20px;
   z-index: 1000;
-  background: #c49b63;
+  background: #2f5480;
   color: white;
   border: none;
   border-radius: 50%;
@@ -252,7 +252,7 @@ const scrollTo = (id) => {
   transition: background 0.3s, transform 0.2s;
 }
 .btn-music:hover {
-  background: #8e6b3d;
+  background: #9caeff;
   transform: scale(1.1);
 }
 

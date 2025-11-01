@@ -35,8 +35,6 @@ app.directive('scroll', vScroll)
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@500;700&family=Inter&display=swap');
-
 .mempelai {
   background: url('/img/bg-flower.png') center/cover no-repeat;
   padding: 4rem 1.5rem;

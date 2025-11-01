@@ -50,12 +50,10 @@ app.directive('scroll', vScroll)
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel&display=swap');
-
 /* === BASE COVER === */
 .cover {
   position: relative;
-  height: 100vh;
+  height: 85vh;
   background: url('/img/bg-flower.png') center/cover no-repeat;
   display: flex;
   align-items: center;

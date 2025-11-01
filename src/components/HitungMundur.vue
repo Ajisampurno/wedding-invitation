@@ -48,7 +48,7 @@ onUnmounted(() => clearInterval(timer))
 
 .event-section {
   background: url('/img/bg-event.jpg') center/cover no-repeat;
-  min-height: 100vh;
+  height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;

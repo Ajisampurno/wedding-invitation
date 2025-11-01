@@ -46,7 +46,7 @@
 
 .invitation-section {
   background: url('/img/bg-event.jpg') center/cover no-repeat;
-  min-height: 100vh;
+  height: 85vh;
   display: flex;
   color: #2d2d2d;
   position: relative;

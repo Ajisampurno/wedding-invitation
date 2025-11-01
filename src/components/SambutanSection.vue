@@ -50,7 +50,7 @@ app.directive('scroll', vScroll)
 
 .sambutan {
   position: relative;
-  height: 100vh;
+  height: 85vh;
   background: url('/img/bg-flower.png') center/cover no-repeat;
   display: flex;
   align-items: center;
