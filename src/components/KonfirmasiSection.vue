@@ -96,7 +96,7 @@ onMounted(() => {
 
 <style scoped>
 .konfirmasi-section {
-  background: url('/img/bg-event.jpg') center/cover no-repeat;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   padding: 4rem 1rem;
   color: #3e2a18;
   font-family: 'Inter', sans-serif;
@@ -104,7 +104,7 @@ onMounted(() => {
   position: relative;
 }
 
-.container {
+/* .container {
   max-width: 600px;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.8);
@@ -112,7 +112,7 @@ onMounted(() => {
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(6px);
-}
+} */
 
 .judul {
   font-family: 'Cinzel', serif;
@@ -125,7 +125,7 @@ onMounted(() => {
 }
 
 .deskripsi {
-  color: #2f5480;
+  color: #2c2c2c;
   font-size: 1.05rem;
   margin-bottom: 2rem;
 }

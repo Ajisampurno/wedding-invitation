@@ -8,7 +8,11 @@
             <img src="/img/aji.jpeg" class="foto" alt="Foto Aji" />
             </div>
             <h3 class="nama">Aji Sampurno, S.Kom</h3>
-            <p class="orangtua">Putra dari Bapak Witaqwin & Ibu Sri Sayekti</p>
+            <p class="orangtua">
+              Putra dari Bapak Witaqwin & Ibu Sri Sayekti
+              <br>
+              (Ngabehan, Sidowangi, kec. Kajoran, Kab. Magelang)
+            </p>
         </div>
     </div>
   </section>
@@ -36,7 +40,7 @@ app.directive('scroll', vScroll)
 
 <style scoped>
 .mempelai {
-  background: url('/img/bg-flower.png') center/cover no-repeat;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   padding: 4rem 1.5rem;
   color: #4a2d1f;
   font-family: 'Inter', sans-serif;
@@ -45,13 +49,13 @@ app.directive('scroll', vScroll)
   text-align: center;
 }
 
-.mempelai-overlay {
+/* .mempelai-overlay {
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(3px);
   z-index: 0;
-}
+} */
 
 .judul {
   font-family: 'Great Vibes', cursive;
@@ -117,7 +121,7 @@ app.directive('scroll', vScroll)
 
 .orangtua {
   font-size: 1rem;
-  color: #2f5480;
+  color: #2c2c2c;
   font-weight: 400;
 }
 

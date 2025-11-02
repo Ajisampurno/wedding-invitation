@@ -54,7 +54,7 @@ app.directive('scroll', vScroll)
 .cover {
   position: relative;
   height: 85vh;
-  background: url('/img/bg-flower.png') center/cover no-repeat;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,8 +67,8 @@ app.directive('scroll', vScroll)
 .cover-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(3px);
+  /* background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(3px); */
   z-index: 1;
 }
 

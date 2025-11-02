@@ -72,7 +72,7 @@ onUnmounted(() => clearInterval(timer))
 
 <style scoped>
 .event-section {
-  background: url('/img/bg-event.jpg') center/cover no-repeat;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   height: 85vh;
   display: flex;
   flex-direction: column;
@@ -106,9 +106,9 @@ onUnmounted(() => clearInterval(timer))
   background: rgba(255, 255, 255, 0.18);
   padding: 1rem 1.7rem;
   border-radius: 14px;
-  backdrop-filter: blur(6px);
+  /* backdrop-filter: blur(6px);
   box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.25); */
 }
 
 .judul {

@@ -154,7 +154,7 @@ const scrollTo = (id) => {
 
 /* === Floral Cover === */
 .floral-cover {
-  background-image: url('/img/floral-blue-bg.jpg');
+  background-image: url('/img/bg-white.jpg');
   background-size: cover;
   background-position: center;
   position: fixed;
@@ -164,15 +164,16 @@ const scrollTo = (id) => {
   align-items: center;
   z-index: 2000;
   text-align: center;
-  color: white;
-  font-family: 'Poppins', sans-serif;
+  color: #2f5480;
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Cinzel', serif;
 }
 
 .floral-cover::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 30, 0.45);
+  /* background: rgba(0, 0, 30, 0.45); */
   z-index: 0;
 }
 
@@ -180,10 +181,10 @@ const scrollTo = (id) => {
   position: relative;
   z-index: 2;
   background: rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
+  /* border-radius: 12px;
   padding: 30px 40px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px); */
 }
 
 .wedding-title {

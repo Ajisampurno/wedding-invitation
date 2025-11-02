@@ -88,7 +88,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Cinzel:wght@600&display=swap');
 
 .ucapan-section {
-  background: url('/img/bg-event.jpg') center/cover no-repeat;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   padding: 4rem 0rem;
   color: #4a2d1f;
   font-family: 'Inter', sans-serif;
@@ -116,24 +116,18 @@
 }
 
 .judul {
-  background: rgba(70, 73, 121, 0.7);
-  color: #ffffff;
-  border-radius: 0 50px 50px 0; /* kiri datar, kanan melengkung */
-  padding: 1.5rem 2rem;
-  margin-left: 0;
-  margin-right: 60px;
+  font-family: 'Cinzel', serif;
+  color: #2f5480;
+  font-size: 2.2rem;
+  line-height: 1.5;
+  letter-spacing: 1px;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  font-family: 'Great Vibes', cursive;
-  text-align: left;
-  margin-top: 0;
 }
 
 .deskripsi {
   font-size: 1.05rem;
   margin-bottom: 2rem;
-  color: #000000;
+  color: #2c2c2c;
 }
 
 .form-ucapan {
@@ -147,7 +141,7 @@
 
 .form-ucapan input,
 .form-ucapan textarea {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(216, 216, 216, 0.7);
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   padding: 1.5rem;
@@ -203,12 +197,15 @@
 .list-ucapan {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  margin-bottom: 2.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .ucapan-card {
   text-align: left;
-  background: rgba(255, 255, 255, 0.3);
+  margin-top: 10px;
+  background: rgba(216, 216, 216, 0.7);
   border: 1px solid rgba(128, 147, 255, 0.3);
   padding: 1rem;
   border-radius: 10px;
@@ -264,7 +261,7 @@
 /* Responsif */
 @media (max-width: 600px) {
   .judul {
-    font-size: 2.7rem;
+    font-size: 2.2rem;
   }
   .form-ucapan input,
   .form-ucapan textarea {

@@ -27,13 +27,16 @@
         </p>
       </div>
 
-      <a
-        href="https://www.google.com/maps/place/7%C2%B039'56.6%22S+111%C2%B018'29.0%22E/@-7.665723,111.3054801,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-7.665723!4d111.308055?hl=id"
-        target="_blank"
-        class="map-button reveal-item"
-      >
-        <i class="fa fa-map-pin"></i> Lokasi acara (g-maps link)
-      </a>
+      <div style="text-align: center;">
+        <a
+          href="https://www.google.com/maps/place/7%C2%B039'56.6%22S+111%C2%B018'29.0%22E/@-7.665723,111.3054801,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-7.665723!4d111.308055?hl=id"
+          target="_blank"
+          class="map-button reveal-item"
+        >
+          <i class="fa fa-map-pin"></i> Lokasi acara (g-maps link)
+        </a>
+      </div>
+
     </div>
   </section>
 </template>
@@ -68,7 +71,7 @@ onMounted(() => {
 
 <style scoped>
 .invitation-section {
-  background: url('/img/bg-event.jpg') center/cover no-repeat;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   height: 85vh;
   display: flex;
   color: #2f5480;
@@ -100,10 +103,9 @@ onMounted(() => {
 .intro-text {
   text-align: center;
   font-size: 1rem;
-  color: #000000;
+  color: #2c2c2c;
   line-height: 1.8;
   margin-bottom: 2rem;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .event-block {
@@ -132,11 +134,10 @@ onMounted(() => {
 .location {
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #000000;
+  color: #2c2c2c;
 }
 
 .map-button {
-  display: inline-block;
   background: #446fa4;
   color: #fff;
   text-decoration: none;

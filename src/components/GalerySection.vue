@@ -81,7 +81,7 @@ onMounted(() => {
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter&display=swap');
 
 .galeri-section {
-  background: url('/img/floral-blue-bg.jpg') center/cover no-repeat;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   padding: 4rem 1.5rem;
   position: relative;
   overflow: hidden;
@@ -90,14 +90,14 @@ onMounted(() => {
   font-family: 'Inter', sans-serif;
 }
 
-.galeri-section::before {
+/* .galeri-section::before {
   content: '';
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(3px);
   z-index: 0;
-}
+} */
 
 .container {
   max-width: 1000px;
@@ -116,7 +116,7 @@ onMounted(() => {
 .deskripsi {
   font-size: 1.05rem;
   margin-bottom: 2.5rem;
-  color: #2f5480;
+  color: #2c2c2c;
 }
 
 .galeri-grid {

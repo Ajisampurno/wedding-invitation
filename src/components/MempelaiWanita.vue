@@ -8,7 +8,11 @@
                 <img src="/img/indah.jpeg" class="foto" alt="Foto Indah" />
             </div>
             <h3 class="nama">Indah Larasati, S.T.</h3>
-            <p class="orangtua">Putri dari Bapak Sukarno (Alm) & Ibu Rijem (Almh)</p>
+            <p class="orangtua">
+              Putri dari Bapak Sukarno (Alm) & Ibu Rijem (Almh) 
+              <br>
+              (Ds. Ringinagung, Kec. Magetan, Kab. Magetan)
+            </p>
         </div>
     </div>
   </section>
@@ -38,7 +42,7 @@ app.directive('scroll', vScroll)
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@500;700&family=Inter&display=swap');
 
 .mempelai {
-  background: url('/img/bg-flower.png') center/cover no-repeat;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   padding: 4rem 1.5rem;
   color: #4a2d1f;
   font-family: 'Inter', sans-serif;
@@ -47,13 +51,13 @@ app.directive('scroll', vScroll)
   text-align: center;
 }
 
-.mempelai-overlay {
+/* .mempelai-overlay {
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(3px);
   z-index: 0;
-}
+} */
 
 .judul {
   font-family: 'Great Vibes', cursive;
@@ -119,7 +123,7 @@ app.directive('scroll', vScroll)
 
 .orangtua {
   font-size: 1rem;
-  color: #2f5480;
+  color: #2c2c2c;
   font-weight: 400;
 }
 
