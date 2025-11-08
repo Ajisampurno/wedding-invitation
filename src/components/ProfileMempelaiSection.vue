@@ -5,7 +5,7 @@
     <div class="pasangan-wrapper">
       <div class="pasangan fade-up" v-scroll>
         <div class="frame">
-          <img src="/img/aji.jpeg" class="foto" alt="Foto Aji" />
+          <img src="/img/aji.jpg" class="foto" alt="Foto Aji" />
         </div>
         <h3 class="nama">Aji Sampurno, S.Kom</h3>
         <p class="orangtua">Putra dari Bapak Witaqwin & Ibu Sri Sayekti</p>

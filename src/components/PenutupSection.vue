@@ -1,11 +1,10 @@
 <template>
   <section class="closing-section" id="closing">
-    <div class="closing-container fade-up">
+    <div ref="closingContainer" class="closing-container zoom-anim">
       <p class="closing-text">
         Merupakan kebahagiaan bagi kami apabila<br />
         Saudara/Saudari berkenan hadir dan memberikan<br />
-        doa baik dalam pernikahan kami.<br />
-        <br />
+        doa baik dalam pernikahan kami.<br /><br />
         Sampai bertemu di hari bahagia kami,
       </p>
 
@@ -15,32 +14,59 @@
 </template>
 
 <script setup>
-// Tidak ada logic dinamis di sini
+import { ref, onMounted, onBeforeUnmount } from "vue";
+
+const closingContainer = ref(null);
+let observer;
+
+onMounted(() => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  if (closingContainer.value) observer.observe(closingContainer.value);
+});
+
+onBeforeUnmount(() => {
+  if (closingContainer.value && observer) observer.unobserve(closingContainer.value);
+});
 </script>
 
 <style scoped>
 .closing-section {
-  background: url('/img/bg-gapura.jpg') center top / cover no-repeat;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem 1rem;
-  position: relative;
-  color: #1a1a1a;
   font-family: 'Cormorant Garamond', serif;
+  color: #1c1b1a;
+  position: relative;
 }
 
-/* Overlay lembut agar teks kontras */
-.closing-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  /* background: rgba(255, 255, 255, 0.75); */
-  /* backdrop-filter: blur(4px); */
-  z-index: 0;
+/* --- ANIMASI ZOOM OUT SAAT SCROLL --- */
+.zoom-anim {
+  opacity: 0;
+  transform: scale(1.2);
+  transition: all 1s ease;
+  will-change: transform, opacity;
 }
 
+.zoom-anim.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* --- Styling utama --- */
 .closing-container {
   position: relative;
   z-index: 1;

@@ -8,7 +8,7 @@
         </p>
       </div>
 
-      <form class="form-konfirmasi fade-up" @submit.prevent="submitKonfirmasi">
+      <form class="form-konfirmasi fade-up" v-scroll @submit.prevent="submitKonfirmasi">
         <input
           v-model="nama"
           type="text"
@@ -34,19 +34,6 @@
 
         <button type="submit" class="btn-kirim">Kirim</button>
       </form>
-
-      <div class="list-konfirmasi fade-up delay">
-        <h3 class="subjudul">Daftar Konfirmasi</h3>
-        <div
-          class="konfirmasi-card"
-          v-for="(item, index) in konfirmasiList"
-          :key="index"
-        >
-          <h4 class="nama">{{ item.nama }}</h4>
-          <p class="status">Status: {{ item.status }}</p>
-          <p v-if="item.status === 'Hadir'">Jumlah tamu: {{ item.jumlahTamu }}</p>
-        </div>
-      </div>
     </div>
   </section>
 </template>
@@ -87,11 +74,37 @@ const submitKonfirmasi = async () => {
   }
 };
 
+// Ambil nama dari URL (contoh: ?to=Aji+Sampurno)
 onMounted(() => {
   const params = new URLSearchParams(window.location.search);
   const to = params.get("to");
   if (to) nama.value = decodeURIComponent(to.replace(/\+/g, " "));
 });
+</script>
+
+<script>
+// ✅ Directive animasi scroll
+export default {
+  directives: {
+    scroll: {
+      mounted(el) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                el.classList.add("visible");
+              } else {
+                el.classList.remove("visible");
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+        observer.observe(el);
+      },
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -104,23 +117,11 @@ onMounted(() => {
   position: relative;
 }
 
-/* .container {
-  max-width: 600px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(6px);
-} */
-
 .judul {
   font-family: 'Cinzel', serif;
   color: #2f5480;
   font-size: 2.2rem;
   font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: 1px;
   margin-bottom: 1.5rem;
 }
 
@@ -129,6 +130,27 @@ onMounted(() => {
   font-size: 1.05rem;
   margin-bottom: 2rem;
 }
+
+/* ============================= */
+/* ✨ ANIMASI FADE + ZOOM SCROLL */
+/* ============================= */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition: all 0.9s ease;
+  will-change: opacity, transform;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.fade-up.delay {
+  transition-delay: 0.2s;
+}
+
+/* ============================= */
 
 .form-konfirmasi {
   display: flex;
@@ -170,72 +192,10 @@ onMounted(() => {
   transform: scale(1.03);
 }
 
-/* Daftar konfirmasi */
-.list-konfirmasi {
-  margin-top: 2.5rem;
-  text-align: left;
-}
-
-.subjudul {
-  text-align: center;
-  font-size: 1.3rem;
-  color: #2f5480;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.konfirmasi-card {
-  background: rgba(47, 84, 128, 0.15);
-  border-left: 4px solid #2f5480;
-  padding: 1rem;
-  border-radius: 10px;
-  margin-bottom: 0.8rem;
-  color: #222;
-  transition: all 0.3s ease;
-}
-
-.konfirmasi-card:hover {
-  background: rgba(47, 84, 128, 0.25);
-  transform: translateY(-2px);
-}
-
-.konfirmasi-card .nama {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-  color: #2f5480;
-}
-
-.konfirmasi-card .status {
-  font-size: 0.95rem;
-  color: #444;
-}
-
-/* Scroll rapi */
-.list-konfirmasi {
-  max-height: 280px;
-  overflow-y: auto;
-  padding-right: 6px;
-}
-
-.list-konfirmasi::-webkit-scrollbar {
-  width: 6px;
-}
-
-.list-konfirmasi::-webkit-scrollbar-thumb {
-  background: rgba(47, 84, 128, 0.4);
-  border-radius: 10px;
-}
-
 /* Responsif */
 @media (max-width: 600px) {
   .judul {
     font-size: 2rem;
-    padding: 0.8rem 1.5rem;
-  }
-
-  .container {
-    padding: 1.5rem;
   }
 
   .form-konfirmasi input,
