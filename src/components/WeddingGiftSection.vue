@@ -10,25 +10,39 @@
       </p>
 
       <button class="btn-togle" @click="togle_btn">
-        {{ title_btn }}
+        <i class="fa fa-gift"></i> {{ title_btn }}
       </button>
 
       <transition name="fade">
         <div v-if="giftBox">
-          <div class="gift-box">
-            <p>
-              🎁 Kado: ke alamat mempelai wanita<br />
-              <span class="gift-detail">
-                (Ds. Ringinagung RT 03 RW 02, Kecamatan Magetan, Kabupaten
-                Magetan, Jawa Timur)
-              </span>
-            </p>
+          <div v-if="giftBox">
+            <div class="gift-box">
+              <p>
+                <i class="fa fa-gift"></i> Kado: ke alamat mempelai wanita<br />
+                <span class="gift-detail" id="alamatKado">
+                  (Ds. Ringinagung RT 03 RW 02, Kecamatan Magetan, Kabupaten
+                  Magetan, Jawa Timur)
+                </span>
+                <button
+                  class="copy-btn-alamat"
+                  @click="copyAlamat"
+                  :aria-label="'Copy Mandiri number'"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <rect x="1" y="1" width="13" height="13" rx="2" ry="2"></rect>
+                  </svg>
+                </button>
+                <span v-if="copied.alamat" class="copied-badge">Copied!</span>
+              </p>
+
+            </div>
           </div>
 
           <!-- Kartu ATM-style Mandiri -->
           <div class="atm-card">
             <div class="atm-chip"></div>
-            <p class="atm-bank">🏦 Bank Mandiri</p>
+            <p class="atm-bank"><i class="fa fa-bank"></i> Bank Mandiri</p>
 
             <div class="atm-row">
               <p class="atm-number">1710 0175 1449 1</p>
@@ -53,7 +67,7 @@
           <!-- Kartu ATM-style BNI -->
           <div class="atm-card bni">
             <div class="atm-chip"></div>
-            <p class="atm-bank">🏦 Bank BNI</p>
+            <p class="atm-bank"><i class="fa fa-bank"></i> Bank BNI</p>
 
             <div class="atm-row">
               <p class="atm-number">1633 6468 52</p>
@@ -90,12 +104,28 @@ const title_btn = ref('Tampilkan Detail')
 const copied = ref({
   mandiri: false,
   bni: false,
+  alamat: false
 })
 
 const togle_btn = () => {
   giftBox.value = !giftBox.value
   title_btn.value = giftBox.value ? 'Sembunyikan Detail' : 'Tampilkan Detail'
 }
+
+const copyAlamat = () => {
+  const alamat = document.getElementById("alamatKado").innerText;
+  navigator.clipboard
+    .writeText(alamat)
+    .then(() => {
+      copied.value.alamat = true;
+      setTimeout(() => {
+        copied.value.alamat = false;
+      }, 1800);
+    })
+    .catch(() => {
+      alert("Gagal menyalin alamat!");
+    });
+};
 
 // fungsi copy dengan fallback (textarea) untuk kompatibilitas
 const copyToClipboard = async (text, key) => {
@@ -277,8 +307,25 @@ const copyToClipboard = async (text, key) => {
   height: 34px;
   color: white;
 }
-.copy-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.18); }
-.copy-btn:active { transform: translateY(0); }
+.copy-btn-alamat:hover { transform: translateY(-2px); background: rgba(255,255,255,0.18); }
+.copy-btn-alamat:active { transform: translateY(0); }
+
+.copy-btn-alamat {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 4, 4, 0.12);
+  border: none;
+  border-radius: 8px;
+  padding: 0.45rem;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.12s ease;
+  width: 38px;
+  height: 34px;
+  color: rgb(94, 94, 94);
+}
+.copy-btn-alamat:hover { transform: translateY(-2px); background: rgba(255,255,255,0.18); }
+.copy-btn-alamat:active { transform: translateY(0); }
 
 .icon { width: 18px; height: 18px; }
 
