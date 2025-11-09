@@ -18,6 +18,9 @@
         <div class="ucapan-card fade-up" v-scroll v-for="(item, index) in ucapanList" :key="index">
           <h4>{{ item.nama }}</h4>
           <p>{{ item.pesan }}</p>
+          <small v-if="item.created_at" style="color:#555;">
+            {{ item.created_at }}
+          </small>
         </div>
       </div>
     </div>
@@ -27,15 +30,16 @@
 <script setup>
   import { ref, onMounted } from 'vue'
 
+  const created_at = ref('')
   const nama = ref('')
   const pesan = ref('')
   const ucapanList = ref([])
 
-  const API_URL = 'https://script.google.com/macros/s/AKfycbw4W4SNheHcUIOaXLE1Td69sFBaSTuAL33SgJAUUo0kYahJ3j_LT8G_QVgR6-nrBFqg/exec'
+  const API_URL = 'https://script.google.com/macros/s/AKfycbyKHnS4Wm940VEPvNR7C9rOh5a_Te3HGzRqusORuuL-0T8cwnw69mKyZjtZDJi7ognn/exec'
 
   async function loadUcapan() {
     try {
-      const res = await fetch('https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgG6P4Ut9mBEt27VAVj1uxvca5WJkUW4j4-1zEOxQuCs-vuV_Kax98KYOnmPyYEFZN-1gf2gob1lkiJphhzH1Brvvr7yQSTilNiXDcARoRu7jd630JmdwRt_Kao3fwCkCY8aaQR9WSYohJsCheFMBrJKvheuIylTlkJfueTluFZ6c7MSPvPGt8Xf7_n6RoXzj2WhWDeLIfgPQWU6bJCPrcxcIaFJC8JnipKERhzDuzBb7y6VGBC1t1M3KOiruq75FnnXGx8w__pDqpmU_KrM87F2GRkwA&lib=MQhHTnH3m9Xgxp3OiYglVD9iR4gTsQqJ6', { method: 'GET' })
+      const res = await fetch(API_URL, { method: 'GET' })
       const text = await res.text()
 
       const data = JSON.parse(text)
@@ -215,17 +219,23 @@
   color: #000000;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+
+  /* Tambahan anti-offside */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap; /* biar line break di text ikut kebaca */
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-.ucapan-card h4 {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #000000;
-}
 .ucapan-card p {
   margin-top: 0.5rem;
   font-size: 0.95rem;
   line-height: 1.5;
+  color: #222;
+  /* biar panjang tapi tetap rapi */
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 /* Animasi Scroll */
