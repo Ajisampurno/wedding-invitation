@@ -83,7 +83,6 @@ onMounted(() => {
 </script>
 
 <script>
-// ✅ Directive animasi scroll
 export default {
   directives: {
     scroll: {
@@ -111,6 +110,7 @@ export default {
 .konfirmasi-section {
   background: url('/img/bg-white.jpg') center/cover no-repeat;
   padding: 4rem 1rem;
+  min-height: 100vh;
   color: #3e2a18;
   font-family: 'Inter', sans-serif;
   text-align: center;
@@ -126,9 +126,11 @@ export default {
 }
 
 .deskripsi {
-  color: #2c2c2c;
-  font-size: 1.05rem;
-  margin-bottom: 2rem;
+  font-size: 0.85rem;
+  line-height: 1.85;
+  color: #000000;
+  margin-bottom: 1rem;
+  font-weight: 400;
 }
 
 /* ============================= */

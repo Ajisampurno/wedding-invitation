@@ -112,8 +112,9 @@ onUnmounted(() => clearInterval(timer))
 }
 
 .judul {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.8rem;
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  font-size: 2rem;
   color: #2f5480;
   margin-bottom: 18px;
   text-shadow: 0 2px 6px rgba(0,0,0,0.25);

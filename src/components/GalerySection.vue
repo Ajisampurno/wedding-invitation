@@ -107,16 +107,18 @@ onMounted(() => {
 }
 
 .judul {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
   margin-bottom: 1rem;
   color: #2f5480;
 }
 
 .deskripsi {
-  font-size: 1.05rem;
-  margin-bottom: 2.5rem;
-  color: #2c2c2c;
+  font-size: 0.85rem;
+  line-height: 1.85;
+  color: #000000;
+  margin-bottom: 1rem;
+  font-weight: 400;
 }
 
 .galeri-grid {

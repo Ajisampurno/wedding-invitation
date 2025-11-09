@@ -51,16 +51,8 @@ app.directive('scroll', vScroll)
   text-align: center;
 }
 
-/* .mempelai-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(3px);
-  z-index: 0;
-} */
-
 .judul {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Cinzel', serif;
   color: #2f5480;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -122,8 +114,10 @@ app.directive('scroll', vScroll)
 }
 
 .orangtua {
-  font-size: 1rem;
-  color: #2c2c2c;
+  font-size: 0.85rem;
+  line-height: 1.85;
+  color: #000000;
+  margin-bottom: 1rem;
   font-weight: 400;
 }
 
@@ -150,7 +144,7 @@ app.directive('scroll', vScroll)
   }
 
   .judul {
-    font-size: 2.7rem;
+    font-size: 2rem;
   }
 
   .frame {

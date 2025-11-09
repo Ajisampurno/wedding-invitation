@@ -9,53 +9,45 @@
         Anda dapat mengirimkannya kepada kami melalui media di bawah ini.
       </p>
 
-      <div class="gift-box reveal-item">
-        <p class="gift-label">
-          🎁 Kado: ke alamat mempelai wanita<br />
-          <span class="gift-detail">
-            (Ds. Ringinagung RT 03 RW 02, Kecamatan Magetan, Kabupaten Magetan,
-            Jawa Timur)
-          </span>
-        </p>
-      </div>
+      <button class="btn-togle" @click="togle_btn">
+        {{ title_btn }}
+      </button>
 
-      <div class="gift-box reveal-item">
-        <p class="gift-label">🏦 Rekening Bank:</p>
-        <p class="gift-detail">
-          Mandiri: <strong>1710017514491 (Indah Larasati)</strong><br />
-          BNI: <strong>1633646852 (Indah Larasati)</strong>
-        </p>
-      </div>
+      <transition name="fade">
+        <div v-if="giftBox">
+          <div class="gift-box">
+            <p>
+              🎁 Kado: ke alamat mempelai wanita<br />
+              <span class="gift-detail">
+                (Ds. Ringinagung RT 03 RW 02, Kecamatan Magetan, Kabupaten
+                Magetan, Jawa Timur)
+              </span>
+            </p>
+          </div>
+
+          <div class="gift-box">
+            <p class="gift-label">🏦 Rekening Bank:</p>
+            <p class="gift-detail">
+              Mandiri: <strong>1710017514491 (Indah Larasati)</strong><br />
+              BNI: <strong>1633646852 (Indah Larasati)</strong>
+            </p>
+          </div>
+        </div>
+      </transition>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
-const giftSection = ref(null)
+const giftBox = ref(false)
+const title_btn = ref('Tampilkan Detail')
 
-const addScrollAnimation = () => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active')
-        } else {
-          entry.target.classList.remove('active') // hapus ini jika ingin tetap tampil saat sudah muncul
-        }
-      })
-    },
-    { threshold: 0.2 }
-  )
-
-  const elements = giftSection.value.querySelectorAll('.reveal-item')
-  elements.forEach((el) => observer.observe(el))
+const togle_btn = () => {
+  giftBox.value = !giftBox.value
+  title_btn.value = giftBox.value ? 'Sembunyikan Detail' : 'Tampilkan Detail'
 }
-
-onMounted(() => {
-  addScrollAnimation()
-})
 </script>
 
 <style scoped>
@@ -71,45 +63,17 @@ onMounted(() => {
   position: relative;
 }
 
-/* Efek blur putih lembut */
-/* .wedding-gift-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(6px);
-  z-index: 0;
-} */
-
-/* ======================== */
-/*   SCROLL REVEAL EFFECT   */
-/* ======================== */
-.reveal-item {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s ease;
-}
-
-.reveal-item.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ======================== */
-
 .gift-container {
-  /* position: relative;
-  z-index: 1; */
   max-width: 600px;
-  /* background: rgba(255, 255, 255, 0.75); */
   padding: 2rem 2.5rem;
-  /* border-radius: 16px; */
-  /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); */
   text-align: center;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .gift-title {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   letter-spacing: 2px;
   font-weight: 600;
   color: #2f2e2d;
@@ -124,19 +88,29 @@ onMounted(() => {
   color: #333;
 }
 
-.gift-box {
-  background: rgba(47, 84, 128, 0.15);
-  border-radius: 10px;
-  padding: 1rem 1.2rem;
-  margin-bottom: 1rem;
-  text-align: left;
-  border-left: 4px solid #4a6ea9;
-  transition: all 0.3s ease;
+.btn-togle {
+  background: #2f5480;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.3s ease;
 }
 
-.gift-box:hover {
-  background: rgba(47, 84, 128, 0.25);
-  transform: translateY(-2px);
+.btn-togle:hover {
+  background: #3a6bb3;
+}
+
+.gift-box {
+  background: rgba(47, 84, 128, 0.1);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+  text-align: left;
+  border-left: 4px solid #4a6ea9;
 }
 
 .gift-label {
@@ -149,6 +123,16 @@ onMounted(() => {
   color: #333;
   font-size: 0.95rem;
   line-height: 1.4;
+}
+
+/* Animasi tampil / sembunyi */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 @media (max-width: 600px) {

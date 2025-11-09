@@ -125,9 +125,11 @@
 }
 
 .deskripsi {
-  font-size: 1.05rem;
-  margin-bottom: 2rem;
-  color: #2c2c2c;
+  font-size: 0.85rem;
+  line-height: 1.85;
+  color: #000000;
+  margin-bottom: 1rem;
+  font-weight: 400;
 }
 
 .form-ucapan {
