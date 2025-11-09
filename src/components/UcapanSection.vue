@@ -9,7 +9,7 @@
       </div>
 
       <form class="form-ucapan fade-up" @submit.prevent="submitUcapan" v-scroll>
-        <input v-model="nama" type="text" placeholder="Nama Anda" required />
+        <!-- <input v-model="nama" type="text" placeholder="Nama Anda" required /> -->
         <textarea v-model="pesan" placeholder="Tulis ucapan..." required></textarea>
         <button class="btn-kirim" type="submit">Kirim</button>
       </form>
@@ -52,7 +52,13 @@
   async function submitUcapan() {
     if (!nama.value || !pesan.value) return;
 
-    const newUcapan = { nama: nama.value, pesan: pesan.value }
+    const now = new Date();
+    const waktu = now.toLocaleString('id-ID', {
+      dateStyle: 'long',
+      timeStyle: 'short'
+    });
+
+    const newUcapan = { created_at: waktu, nama: nama.value, pesan: pesan.value }
     ucapanList.value.unshift(newUcapan)
 
     try {
@@ -85,6 +91,11 @@
       { threshold: 0.15 }
     )
     document.querySelectorAll('[v-scroll], [v-scroll="true"]').forEach((el) => observer.observe(el))
+  
+    // Ambil nama dari URL (contoh: ?to=Aji+Sampurno)
+    const params = new URLSearchParams(window.location.search);
+    const to = params.get("to");
+    if (to) nama.value = decodeURIComponent(to.replace(/\+/g, " "));
   })
 </script>
 

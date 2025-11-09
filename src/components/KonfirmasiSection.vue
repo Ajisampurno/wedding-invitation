@@ -9,13 +9,13 @@
       </div>
 
       <form class="form-konfirmasi fade-up" v-scroll @submit.prevent="submitKonfirmasi">
-        <input
+        <!-- <input
           v-model="nama"
           type="text"
           placeholder="Nama Anda"
           required
           readonly
-        />
+        /> -->
 
         <select v-model="status" required>
           <option value="" disabled>Pilih Kehadiran</option>
