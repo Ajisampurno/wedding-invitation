@@ -140,6 +140,7 @@
 }
 
 .deskripsi {
+  font-family: 'cambria', serif;
   font-size: 0.85rem;
   line-height: 1.85;
   color: #000000;

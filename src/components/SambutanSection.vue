@@ -85,7 +85,7 @@ app.directive('scroll', vScroll)
 }
 
 .salam {
-  font-family: 'Cinzel', serif;
+  font-family: 'cambria', serif;
   font-size: 1.6rem;
   font-weight: 700;
   color: #000000;
@@ -94,7 +94,7 @@ app.directive('scroll', vScroll)
 }
 
 .paragraf-surat {
-  font-family: 'Cinzel', serif;
+  font-family: 'cambria', serif;
   font-size: 1.05rem;
   line-height: 1.85;
   color: #000000;
@@ -108,7 +108,9 @@ app.directive('scroll', vScroll)
 }
 
 .paragraf-inggris {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-family: 'cambria', serif;
+  font-style: italic;
   line-height: 1.85;
   color: #000000;
   margin-bottom: 1rem;

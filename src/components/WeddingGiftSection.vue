@@ -176,7 +176,7 @@ const copyToClipboard = async (text, key) => {
 .gift-container {
   max-width: 600px;
   padding: 2rem 2.5rem;
-  text-align: center;
+  /* text-align: center; */
   background: rgba(255, 255, 255, 0.7);
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -185,6 +185,7 @@ const copyToClipboard = async (text, key) => {
 .gift-title {
   font-size: 1.6rem;
   letter-spacing: 2px;
+  text-align: center;
   font-weight: 600;
   color: #2f2e2d;
   margin-bottom: 1.5rem;
@@ -192,8 +193,9 @@ const copyToClipboard = async (text, key) => {
 
 .gift-text {
   font-size: 1.05rem;
+  font-family: 'cambria', serif;
   line-height: 1.6;
-  font-style: italic;
+  text-align: justify;
   margin-bottom: 2rem;
   color: #333;
 }
@@ -221,6 +223,13 @@ const copyToClipboard = async (text, key) => {
   margin: 1rem 0;
   text-align: left;
   border-left: 4px solid #4a6ea9;
+}
+
+.gift-box p {
+  margin: 0;
+  font-family: 'cambria', serif;
+  font-size: 0.95rem;
+  color: #333;
 }
 
 .gift-detail {

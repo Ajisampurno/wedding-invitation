@@ -9,14 +9,6 @@
       </div>
 
       <form class="form-konfirmasi fade-up" v-scroll @submit.prevent="submitKonfirmasi">
-        <!-- <input
-          v-model="nama"
-          type="text"
-          placeholder="Nama Anda"
-          required
-          readonly
-        /> -->
-
         <select v-model="status" required>
           <option value="" disabled>Pilih Kehadiran</option>
           <option value="Hadir">Hadir</option>
@@ -32,24 +24,53 @@
           required
         />
 
-        <button type="submit" class="btn-kirim">Kirim</button>
+        <button :disabled="loading" type="submit" class="btn-kirim">
+          {{ loading ? "Mengirim..." : "Kirim" }}
+        </button>
       </form>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, getCurrentInstance } from "vue";
+import Swal from "sweetalert2";
 
+// REACTIVE STATE
+const loading = ref(false);
 const nama = ref("");
 const status = ref("");
 const jumlahTamu = ref(1);
 const konfirmasiList = ref([]);
 
+// SCROLL DIRECTIVE
+const scrollDirective = {
+  mounted(el) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            el.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+  },
+};
+
+// REGISTER DIRECTIVE (script setup style)
+const app = getCurrentInstance().appContext.app;
+app.directive("scroll", scrollDirective);
+
 const SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycby8j-Bhx89ucdPuh_GWEfzWepjSopvzNY4a-2X7FGydW3sEp2vAm6mnwVKzkNOpUOGq0g/exec";
 
+// SUBMIT
 const submitKonfirmasi = async () => {
+  loading.value = true;
+
   const data = {
     nama: nama.value,
     status: status.value,
@@ -67,21 +88,32 @@ const submitKonfirmasi = async () => {
     konfirmasiList.value.push(data);
     status.value = "";
     jumlahTamu.value = 1;
-    alert("Konfirmasi berhasil disimpan!");
+
+    Swal.fire({
+      icon: "success",
+      title: "Berhasil!",
+      text: "Konfirmasi kehadiran tersimpan.",
+      showConfirmButton: false,
+      timer: 1800,
+    });
   } catch (err) {
-    console.error(err);
-    alert("Gagal menyimpan konfirmasi, coba lagi.");
+    Swal.fire({
+      icon: "error",
+      title: "Gagal!",
+      text: "Terjadi kesalahan, silakan coba lagi.",
+    });
+  } finally {
+    loading.value = false;
   }
 };
 
-// Ambil nama dari URL (contoh: ?to=Aji+Sampurno)
+// Ambil nama dari URL
 onMounted(() => {
   const params = new URLSearchParams(window.location.search);
   const to = params.get("to");
   if (to) nama.value = decodeURIComponent(to.replace(/\+/g, " "));
 });
 </script>
-
 <script>
 export default {
   directives: {
@@ -127,6 +159,7 @@ export default {
 
 .deskripsi {
   font-size: 0.85rem;
+  font-family: 'cambria', serif;
   line-height: 1.85;
   color: #000000;
   margin-bottom: 1rem;

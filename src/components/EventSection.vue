@@ -8,7 +8,7 @@
       <div class="event-block reveal-item">
         <h3>AKAD NIKAH</h3>
         <p class="date">
-          <i class="fa fa-clock"></i> Senin, 29 Desember 2025 (07.30 WIB)
+          <i class="fa fa-clock"></i> Senin, 29 Desember 2025 (08.00 WIB)
         </p>
         <p class="location">
           <i class="fa fa-map-pin"></i> Kediaman mempelai wanita <br />
@@ -33,7 +33,7 @@
           target="_blank"
           class="map-button reveal-item"
         >
-          <i class="fa fa-map-pin"></i> Lokasi acara (g-maps link)
+          <i class="fa fa-map-pin"></i> Lokasi acara
         </a>
       </div>
 
@@ -102,6 +102,7 @@ onMounted(() => {
 
 .intro-text {
   text-align: center;
+  font-family: 'cambria', serif;
   font-size: 1rem;
   color: #2c2c2c;
   line-height: 1.8;
@@ -127,12 +128,14 @@ onMounted(() => {
 
 .date {
   font-size: 0.95rem;
+  font-family: 'cambria', serif;
   font-weight: 500;
   margin-bottom: 0.3rem;
 }
 
 .location {
   font-size: 0.9rem;
+  font-family: 'cambria', serif;
   line-height: 1.5;
   color: #2c2c2c;
 }

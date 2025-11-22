@@ -121,6 +121,7 @@ app.directive('scroll', vScroll)
 
 .orangtua {
   font-size: 0.85rem;
+  font-family: 'cambria', serif;
   line-height: 1.85;
   color: #000000;
   margin-bottom: 1rem;
