@@ -25,8 +25,12 @@
     </audio>
 
     <!-- tombol musik -->
-    <button v-if="!showCover && !showNav" @click="toggleMusic" class="btn-music">
-      {{ isPlaying ? '🔊' : '🔇' }}
+    <button
+      v-if="!showCover && !showNav"
+      @click="toggleMusic"
+      class="btn-music"
+    >
+      <i :class="isPlaying ? 'fas fa-volume-up' : 'fas fa-volume-mute'"></i>
     </button>
 
     <!-- navigasi -->
@@ -238,7 +242,7 @@ const scrollTo = (id) => {
   bottom: 20px;
   right: 20px;
   z-index: 1000;
-  background: #2f5480;
+  background: #cdcdcd;
   color: white;
   border: none;
   border-radius: 50%;

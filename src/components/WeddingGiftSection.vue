@@ -3,7 +3,7 @@
     <div class="gift-container reveal-item">
       <h2 class="gift-title reveal-item">WEDDING GIFT</h2>
 
-      <p class="gift-text reveal-item">
+      <p class="gift-text reveal-typing">
         Doa baik dan kebahagiaan adalah karunia yang sangat berarti bagi kami.
         Namun, apabila memberi materi merupakan ungkapan kebahagiaan bersama,
         Anda dapat mengirimkannya kepada kami melalui media di bawah ini.
@@ -95,7 +95,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const giftBox = ref(false)
 const title_btn = ref('Tampilkan Detail')
@@ -159,6 +159,23 @@ const copyToClipboard = async (text, key) => {
     }, 1800)
   }
 }
+
+onMounted(() => {
+  const revealElements = document.querySelectorAll('.reveal-item, .reveal-typing')
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible')
+        }
+      })
+    },
+    { threshold: 0.15 }
+  )
+
+  revealElements.forEach((el) => observer.observe(el))
+})
 </script>
 
 <style scoped>
@@ -361,6 +378,28 @@ const copyToClipboard = async (text, key) => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+/* Animasi muncul dari bawah */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s ease;
+}
+
+.reveal-item.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animasi mengetik untuk paragraf */
+.reveal-typing {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.reveal-typing.reveal-visible {
+  opacity: 1;
 }
 
 @media (max-width: 600px) {

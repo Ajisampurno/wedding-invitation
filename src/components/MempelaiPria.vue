@@ -11,7 +11,7 @@
             <p class="orangtua">
               Putra dari Bapak Witaqwin & Ibu Sri Sayekti
               <br>
-              (Ngabehan, Sidowangi, kec. Kajoran, Kab. Magelang)
+              (Ngabehan, Sidowangi, Kec. Kajoran, Kab. Magelang)
             </p>
         </div>
     </div>

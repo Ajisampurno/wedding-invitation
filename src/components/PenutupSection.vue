@@ -2,8 +2,8 @@
   <section class="closing-section" id="closing">
     <div ref="closingContainer" class="closing-container">
       <p class="closing-text">
-        Merupakan kebahagiaan bagi kami apabila<br />
-        Saudara/Saudari berkenan hadir dan memberikan<br />
+        Merupakan kebahagiaan bagi kami apabila
+        Saudara/Saudari berkenan hadir dan memberikan
         doa baik dalam pernikahan kami.<br /><br />
         Sampai bertemu di hari bahagia kami,
       </p>
@@ -44,7 +44,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .closing-section {
   background: url('/img/bg-white.jpg') center/cover no-repeat;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,6 +81,7 @@ onBeforeUnmount(() => {
   line-height: 1.8;
   color: #2c2c2c;
   margin-bottom: 2rem;
+  text-align: justify;
 }
 
 .closing-hashtag {

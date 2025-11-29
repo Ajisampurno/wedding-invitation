@@ -3,9 +3,6 @@
     <div class="container">
       <div class="header">
         <h2 class="judul fade-up" v-scroll>Konfirmasi Kehadiran</h2>
-        <p class="deskripsi fade-up delay" v-scroll>
-          Silakan tinggalkan ucapan dan doa terbaik untuk kami.
-        </p>
       </div>
 
       <form class="form-konfirmasi fade-up" v-scroll @submit.prevent="submitKonfirmasi">
@@ -142,7 +139,9 @@ export default {
 .konfirmasi-section {
   background: url('/img/bg-white.jpg') center/cover no-repeat;
   padding: 4rem 1rem;
-  min-height: 60vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
   color: #3e2a18;
   font-family: 'Inter', sans-serif;
   text-align: center;
