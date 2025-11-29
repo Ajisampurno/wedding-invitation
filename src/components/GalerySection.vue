@@ -7,8 +7,8 @@
       </p>
 
       <!-- Foto utama -->
-      <div class="foto-utama fade-up" v-scroll @click="openModal(photos[0])">
-        <img :src="photos[0]" class="foto-utama-img" alt="Foto Utama" />
+      <div class="foto-utama fade-up" v-scroll @click="openModal(mainPhoto)">
+        <img :src="mainPhoto" class="foto-utama-img" alt="Foto Utama" />
       </div>
 
       <!-- Galeri kecil swipe -->
@@ -16,9 +16,9 @@
         <div
           class="foto-small fade-up"
           v-scroll
-          v-for="(foto, index) in photos.slice(1)"
+          v-for="(foto, index) in photos"
           :key="index"
-          @click="openModal(foto)"
+          @click="setMainPhoto(foto)"
         >
           <img :src="foto" class="foto-small-img" />
         </div>
@@ -38,7 +38,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-// Data foto galeri
 const photos = [
   '/img/gallery-1.jpg',
   '/img/gallery-2.jpg',
@@ -54,6 +53,12 @@ const photos = [
   '/img/gallery-12.jpg',
 ]
 
+const mainPhoto = ref(photos[0])
+
+const setMainPhoto = (foto) => {
+  mainPhoto.value = foto
+}
+
 // Modal logic
 const selectedPhoto = ref(null)
 const openModal = (foto) => {
@@ -63,24 +68,26 @@ const closeModal = () => {
   selectedPhoto.value = null
 }
 
-// Scroll animation directive
+// Scroll reveal
 onMounted(() => {
+  const revealElements = document.querySelectorAll('.reveal-item, .reveal-typing')
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('in-view')
-          observer.unobserve(entry.target)
+          entry.target.classList.add('reveal-visible')
+        } else {
+          entry.target.classList.remove('reveal-visible')
         }
       })
     },
     { threshold: 0.15 }
   )
 
-  document.querySelectorAll('[v-scroll], [v-scroll="true"]').forEach((el) => {
-    observer.observe(el)
-  })
+  revealElements.forEach((el) => observer.observe(el))
 })
+
 </script>
 
 <style scoped>
