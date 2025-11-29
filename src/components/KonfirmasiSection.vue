@@ -142,7 +142,7 @@ export default {
 .konfirmasi-section {
   background: url('/img/bg-white.jpg') center/cover no-repeat;
   padding: 4rem 1rem;
-  min-height: 100vh;
+  min-height: 60vh;
   color: #3e2a18;
   font-family: 'Inter', sans-serif;
   text-align: center;

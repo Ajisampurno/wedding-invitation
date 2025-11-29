@@ -1,6 +1,6 @@
 <template>
   <section class="closing-section" id="closing">
-    <div ref="closingContainer" class="closing-container zoom-anim">
+    <div ref="closingContainer" class="closing-container">
       <p class="closing-text">
         Merupakan kebahagiaan bagi kami apabila<br />
         Saudara/Saudari berkenan hadir dan memberikan<br />
@@ -48,25 +48,12 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'cambria', serif;
   color: #1c1b1a;
   position: relative;
 }
 
-/* --- ANIMASI ZOOM OUT SAAT SCROLL --- */
-.zoom-anim {
-  opacity: 0;
-  transform: scale(1.2);
-  transition: all 1s ease;
-  will-change: transform, opacity;
-}
-
-.zoom-anim.visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* --- Styling utama --- */
+/* Animasi scroll */
 .closing-container {
   position: relative;
   z-index: 1;
@@ -76,13 +63,23 @@ onBeforeUnmount(() => {
   border-radius: 16px;
   padding: 3rem 2rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+  /* animasi */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+.closing-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Text */
 .closing-text {
   font-size: 1.15rem;
   line-height: 1.8;
   color: #2c2c2c;
-  font-style: italic;
   margin-bottom: 2rem;
 }
 
@@ -96,9 +93,6 @@ onBeforeUnmount(() => {
 
 /* Responsif */
 @media (max-width: 600px) {
-  .closing-container {
-    padding: 2rem 1.2rem;
-  }
   .closing-text {
     font-size: 1rem;
   }
