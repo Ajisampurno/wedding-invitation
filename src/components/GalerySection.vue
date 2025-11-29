@@ -6,15 +6,21 @@
         Beberapa momen kebersamaan kami yang penuh kenangan.
       </p>
 
-      <div class="galeri-grid">
+      <!-- Foto utama -->
+      <div class="foto-utama fade-up" v-scroll @click="openModal(photos[0])">
+        <img :src="photos[0]" class="foto-utama-img" alt="Foto Utama" />
+      </div>
+
+      <!-- Galeri kecil swipe -->
+      <div class="galeri-swipe">
         <div
-          class="foto-wrapper fade-up"
+          class="foto-small fade-up"
           v-scroll
-          v-for="(foto, index) in photos"
+          v-for="(foto, index) in photos.slice(1)"
           :key="index"
           @click="openModal(foto)"
         >
-          <img :src="foto" alt="Foto Galeri" class="foto" />
+          <img :src="foto" class="foto-small-img" />
         </div>
       </div>
     </div>
@@ -122,46 +128,68 @@ onMounted(() => {
   font-weight: 400;
 }
 
-.galeri-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* fix 2 kolom */
-  gap: 1rem;
-  padding: 0 1rem;
-  justify-items: center;
-}
-
-.foto-wrapper {
-  overflow: hidden;
+/* Foto utama */
+.foto-utama {
+  width: 100%;
   border-radius: 1rem;
-  border: 4px solid #ffffff;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
   cursor: pointer;
-  transition: transform 0.3s ease;
-  width: 100%;
-  aspect-ratio: 1 / 1;
 }
 
-.foto-wrapper:hover {
-  transform: scale(1.03);
-}
-
-.foto {
+.foto-utama-img {
   width: 100%;
-  height: 100%;
+  height: 300px;
   object-fit: cover;
-  display: block;
 }
 
-/* Responsive (HP tetap 2 kolom tapi lebih rapat) */
-@media (max-width: 600px) {
-  .galeri-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
+/* Swipe bar kecil */
+.galeri-swipe {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 8px;
+  scroll-snap-type: x mandatory;
+}
+
+.galeri-swipe::-webkit-scrollbar {
+  height: 6px;
+}
+.galeri-swipe::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/* Foto kecil berbentuk card */
+.foto-small {
+  flex: 0 0 120px;
+  scroll-snap-align: start;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+.foto-small-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+/* Mobile khusus */
+@media (max-width: 500px) {
+  .foto-utama-img {
+    height: 240px;
   }
 
-  .foto-wrapper {
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    border-radius: 0.7rem;
+  .foto-small {
+    flex: 0 0 100px;
+  }
+
+  .foto-small-img {
+    height: 100px;
   }
 }
 
