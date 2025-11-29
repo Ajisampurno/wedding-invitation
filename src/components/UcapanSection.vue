@@ -9,13 +9,13 @@
       </div>
 
       <form class="form-ucapan fade-up" @submit.prevent="submitUcapan" v-scroll>
-        <!-- <input v-model="nama" type="text" placeholder="Nama Anda" required /> -->
+        <input v-model="nama" type="hidden" placeholder="Nama Anda" required />
         <textarea v-model="pesan" placeholder="Tulis ucapan..." required></textarea>
         <button class="btn-kirim" type="submit">Kirim</button>
       </form>
 
       <div class="list-ucapan">
-        <div class="ucapan-card fade-up" v-scroll v-for="(item, index) in ucapanList" :key="index">
+        <div class="ucapan-card" v-scroll v-for="(item, index) in ucapanList" :key="index">
           <h4>{{ item.nama }}</h4>
           <p>{{ item.pesan }}</p>
           <small v-if="item.created_at" style="color:#555;">
@@ -31,7 +31,7 @@
   import { ref, onMounted } from 'vue'
 
   const created_at = ref('')
-  const nama = ref('')
+  const nama = ref("");
   const pesan = ref('')
   const ucapanList = ref([])
 
@@ -39,19 +39,15 @@
 
   async function loadUcapan() {
     try {
-      const res = await fetch(API_URL, { method: 'GET' })
-      const text = await res.text()
-
-      const data = JSON.parse(text)
-      ucapanList.value = data
+      const res = await fetch(API_URL);
+      const data = await res.json();
+      ucapanList.value = data;
     } catch (err) {
-      console.error('Gagal load ucapan:', err)
+      console.error("Gagal load ucapan:", err);
     }
   }
 
   async function submitUcapan() {
-    if (!nama.value || !pesan.value) return;
-
     const now = new Date();
     const waktu = now.toLocaleString('id-ID', {
       dateStyle: 'long',
@@ -76,9 +72,13 @@
   }
 
   onMounted(() => {
-    loadUcapan()
+    const urlParams = new URLSearchParams(window.location.search);
+    const toParam = urlParams.get("to");
 
-    // Scroll animation
+    if (toParam) {
+      nama.value = decodeURIComponent(toParam);
+    }
+    loadUcapan()
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -91,11 +91,6 @@
       { threshold: 0.15 }
     )
     document.querySelectorAll('[v-scroll], [v-scroll="true"]').forEach((el) => observer.observe(el))
-  
-    // Ambil nama dari URL (contoh: ?to=Aji+Sampurno)
-    const params = new URLSearchParams(window.location.search);
-    const to = params.get("to");
-    if (to) nama.value = decodeURIComponent(to.replace(/\+/g, " "));
   })
 </script>
 
