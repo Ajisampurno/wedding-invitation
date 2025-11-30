@@ -7,7 +7,7 @@
             <div class="frame">
                 <img src="/img/indah.jpeg" class="foto" alt="Foto Indah" />
             </div>
-            <h3 class="nama">Indah Larasati, S.T.</h3>
+            <h3 class="nama">Indah Larasati, S.T</h3>
             <p class="orangtua">
               Putri dari Bapak Sukarno (Alm) & Ibu Rijem (Almh) 
               <br>
