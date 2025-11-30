@@ -43,7 +43,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .closing-section {
-  background: transparent;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   min-height: 80vh;
   display: flex;
   align-items: center;

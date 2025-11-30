@@ -98,7 +98,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Cinzel:wght@600&display=swap');
 
 .ucapan-section {
-  background: transparent;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   padding: 4rem 0rem;
   color: #4a2d1f;
   font-family: 'Inter', sans-serif;

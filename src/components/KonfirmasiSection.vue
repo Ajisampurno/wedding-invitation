@@ -137,7 +137,7 @@ export default {
 
 <style scoped>
 .konfirmasi-section {
-  background: transparent;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   padding: 4rem 1rem;
   min-height: 100vh;
   display: flex;
