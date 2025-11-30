@@ -146,6 +146,14 @@ const scrollTo = (id) => {
 </script>
 
 <style scoped>
+.main-bg {
+  background-image: url('/img/bg-white.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* 🔥 agar background tidak ikut scroll */
+  min-height: 100vh;
+}
+
 /* === Animasi Fade Cover === */
 .fade-cover-enter-active,
 .fade-cover-leave-active {

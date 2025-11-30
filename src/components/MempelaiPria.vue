@@ -40,7 +40,7 @@ app.directive('scroll', vScroll)
 
 <style scoped>
 .mempelai {
-  background: url('/img/bg-white.jpg') center/cover no-repeat;
+  background: transparent;
   padding: 4rem 1.5rem;
   color: #4a2d1f;
   font-family: 'Inter', sans-serif;

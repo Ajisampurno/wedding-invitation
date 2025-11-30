@@ -72,7 +72,7 @@ onUnmounted(() => clearInterval(timer))
 
 <style scoped>
 .event-section {
-  background: url('/img/bg-white.jpg') center/cover no-repeat;
+  background: transparent;
   height: 85vh;
   display: flex;
   flex-direction: column;
@@ -81,7 +81,7 @@ onUnmounted(() => clearInterval(timer))
   font-family: 'Inter', sans-serif;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(3px);
+  /* backdrop-filter: blur(3px); */
 }
 
 /* ============================= */
@@ -103,9 +103,9 @@ onUnmounted(() => clearInterval(timer))
   gap: 0.8rem;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.18);
+  /* background: rgba(255, 255, 255, 0.18); */
   padding: 1rem 1.7rem;
-  border-radius: 14px;
+  /* border-radius: 14px; */
   /* backdrop-filter: blur(6px);
   box-shadow: 0 4px 20px rgba(0,0,0,0.25);
   border: 1px solid rgba(255,255,255,0.25); */

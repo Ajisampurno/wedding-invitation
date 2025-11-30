@@ -54,7 +54,7 @@ app.directive('scroll', vScroll)
 .cover {
   position: relative;
   height: 85vh;
-  background: url('/img/bg-white.jpg') center/cover no-repeat;
+  background: transparent; /* 🔥 background lama dihilangkan */
   display: flex;
   align-items: center;
   justify-content: center;
