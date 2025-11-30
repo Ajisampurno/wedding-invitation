@@ -46,11 +46,6 @@ const photos = [
   '/img/gallery-5.jpg',
   '/img/gallery-6.jpg',
   '/img/gallery-7.jpg',
-  '/img/gallery-8.jpg',
-  '/img/gallery-9.jpg',
-  '/img/gallery-10.jpg',
-  '/img/gallery-11.jpg',
-  '/img/gallery-12.jpg',
 ]
 
 const mainPhoto = ref(photos[0])
