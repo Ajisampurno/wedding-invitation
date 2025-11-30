@@ -147,12 +147,25 @@ const scrollTo = (id) => {
 
 <style scoped>
 .main-bg {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden; /* penting */
+}
+
+.main-bg::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url('/img/bg-white.jpg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* 🔥 agar background tidak ikut scroll */
-  min-height: 100vh;
+  z-index: -1;
+  pointer-events: none;
 }
+
 
 /* === Animasi Fade Cover === */
 .fade-cover-enter-active,
