@@ -188,7 +188,7 @@
 
 /* Tombol Transparan */
 .form-ucapan button {
-  background: rgba(255, 255, 255, 0.15);
+  /* background: rgba(255, 255, 255, 0.15); */
   color: #fffaf3;
   border: 1px solid rgba(128, 147, 255, 0.3);
   padding: 0.75rem 1rem;
