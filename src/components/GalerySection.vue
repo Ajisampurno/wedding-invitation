@@ -93,7 +93,7 @@ onMounted(() => {
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter&display=swap');
 
 .galeri-section {
-  background: transparent;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   padding: 4rem 1.5rem;
   position: relative;
   overflow: hidden;

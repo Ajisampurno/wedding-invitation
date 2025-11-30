@@ -71,7 +71,7 @@ onMounted(() => {
 
 <style scoped>
 .invitation-section {
-  background: transparent;
+  background: url('/img/bg-white.jpg') center/cover no-repeat;
   height: 85vh;
   display: flex;
   color: #2f5480;
