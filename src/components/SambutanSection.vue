@@ -51,7 +51,7 @@ app.directive('scroll', vScroll)
 .sambutan {
   position: relative;
   height: 85vh;
-  background: url('/img/bg-white.jpg') center/cover no-repeat;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;

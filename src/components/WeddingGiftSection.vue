@@ -182,7 +182,7 @@ onMounted(() => {
 
 <style scoped>
 .wedding-gift-section {
-  background: url('/img/bg-white.jpg') center/cover no-repeat;
+  background: transparent;
   min-height: 100vh;
   display: flex;
   align-items: center;

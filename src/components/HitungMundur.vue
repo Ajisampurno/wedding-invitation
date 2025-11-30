@@ -72,7 +72,7 @@ onUnmounted(() => clearInterval(timer))
 
 <style scoped>
 .event-section {
-  background: url('/img/bg-white.jpg') center/cover no-repeat;
+  background: transparent;
   height: 85vh;
   display: flex;
   flex-direction: column;
