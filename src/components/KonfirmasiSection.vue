@@ -197,6 +197,7 @@ export default {
   width: 100%;
   padding: 0.9rem 1rem;
   font-size: 1rem;
+  color: #000000;
   border: 1px solid #ccc;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.9);

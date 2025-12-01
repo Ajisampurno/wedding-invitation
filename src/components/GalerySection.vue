@@ -41,7 +41,7 @@ import { ref, onMounted } from 'vue'
 const photos = [
   '/img/gallery-1.jpg',
   '/img/gallery-11.jpg',
-  '/img/gallery-2.jpg',
+  // '/img/gallery-2.jpg',
   '/img/gallery-3.jpg',
   '/img/gallery-4.jpg',
   '/img/gallery-5.jpg',
@@ -49,7 +49,9 @@ const photos = [
   '/img/gallery-7.jpg',
   '/img/gallery-8.jpg',
   '/img/gallery-9.jpg',
-  '/img/gallery-10.jpg',
+  // '/img/gallery-10.jpg',
+  '/img/gallery-12.jpg',
+  '/img/gallery-13.jpg',
 ]
 
 const mainPhoto = ref(photos[0])
