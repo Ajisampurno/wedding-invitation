@@ -2,8 +2,9 @@
   <section class="cover">
     <div class="cover-overlay"></div>
     <div class="cover-content">
-      <p class="subtitle fade-up" v-scroll>Welcome to our forever</p>
-      <h1 class="title fade-up" v-scroll>THE WEDDING<br />OF AJI & INDAH</h1>
+      <p class="subtitle fade-up" v-scroll>Welcome to our forever <br></p>
+      <p class="subtitle fade-up" v-scroll>OUR NEW CHAPTER <br></p>
+      <h1 class="title fade-up" v-scroll>AJI & INDAH</h1>
       <p class="date fade-up" v-scroll>29.12.2025</p>
       <button class="save-btn fade-scale" v-scroll @click="saveTheDate">Save the date</button>
     </div>

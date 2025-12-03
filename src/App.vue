@@ -13,7 +13,7 @@
           </p>
 
           <button @click="openInvitation" class="btn-click">
-            CLICK HERE!
+            CLICK HERE
           </button>
         </div>
       </div>
